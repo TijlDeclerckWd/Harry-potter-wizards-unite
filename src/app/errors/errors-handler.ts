@@ -41,7 +41,7 @@ export class ErrorsHandler implements ErrorHandler {
       errorService
         .log(error)
         .subscribe(errorWithContextInfo => {
-          router.navigate(['/error'], { queryParams: errorWithContextInfo });
+          // router.navigate(['/error'], { queryParams: errorWithContextInfo });
         });
     }
 
