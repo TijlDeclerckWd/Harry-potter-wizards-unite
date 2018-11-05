@@ -1,0 +1,108 @@
+.list-options {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-around; }
+  @media (max-width: 37.5em) {
+    .list-options {
+      justify-content: space-between; } }
+  .list-options .sort-menu-container:hover {
+    color: #fff; }
+  .list-options .sort-menu-container .mat-menu-button {
+    background-color: #bbb;
+    outline: none;
+    font-size: 1.5rem; }
+    @media (max-width: 37.5em) {
+      .list-options .sort-menu-container .mat-menu-button {
+        margin-left: 30%; } }
+    .list-options .sort-menu-container .mat-menu-button .fa-caret-down {
+      font-size: 2rem;
+      margin-left: 0.5rem; }
+  .list-options .refresh {
+    width: 5%;
+    background-color: #bbb;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    .list-options .refresh:hover {
+      background-color: #959595;
+      color: #fff; }
+    @media (max-width: 37.5em) {
+      .list-options .refresh {
+        margin-right: 5%; } }
+    .list-options .refresh .fa-refresh {
+      font-size: 1.5rem; }
+
+.list {
+  list-style: none; }
+  .list .list-item {
+    display: flex;
+    margin-top: 2rem;
+    justify-content: space-around;
+    align-items: center;
+    outline: none; }
+    @media (max-width: 37.5em) {
+      .list .list-item {
+        padding: 1rem; } }
+    .list .list-item:hover {
+      background-color: #d6f5f5; }
+    .list .list-item .profile-picture-container {
+      flex: 0 0 15%;
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+      .list .list-item .profile-picture-container .profile-picture {
+        border-radius: 50%;
+        height: 6rem;
+        width: 6rem; }
+    .list .list-item .title-container {
+      flex: 1 0 0;
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      justify-content: center; }
+      @media (max-width: 56.25em) {
+        .list .list-item .title-container .title {
+          font-size: 1.8rem; } }
+      .list .list-item .title-container .last-reply-message, .list .list-item .title-container .no-replies {
+        margin-bottom: 0; }
+        @media (max-width: 56.25em) {
+          .list .list-item .title-container .last-reply-message, .list .list-item .title-container .no-replies {
+            font-size: 1.2rem; } }
+      .list .list-item .title-container .fa-reply {
+        margin-right: .5rem; }
+    .list .list-item .label {
+      flex: 0 0 15%;
+      margin-right: 5%;
+      border-radius: 5px;
+      text-align: center; }
+      .list .list-item .label__text {
+        color: white; }
+      @media (max-width: 37.5em) {
+        .list .list-item .label {
+          display: none; } }
+    .list .list-item .replies-container {
+      display: flex;
+      align-items: center;
+      justify-content: start;
+      flex: 0 0 15%; }
+      .list .list-item .replies-container .fa-comment {
+        font-size: 2rem;
+        margin-right: 0.5rem; }
+      .list .list-item .replies-container .number-of-replies {
+        font-size: 2rem;
+        margin-bottom: 0; }
+
+.no-posts {
+  width: 50%;
+  text-align: center;
+  margin: 10rem auto; }
+
+.mat-spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); }
+
+/*# sourceMappingURL=forum-list.component.css.map */

@@ -1,0 +1,72 @@
+@import "../../SASS/abstracts/variables";
+@import "../../SASS/abstracts/mixins";
+
+@import "../../SASS/components/button";
+
+.forum-container {
+  display: flex;
+  justify-content: center;
+  min-height: 50rem;
+  background-color: $color-white;
+
+  @include respond(phone) {
+    display: block;
+  }
+
+  .navigation-container {
+    width: 25%;
+    margin-right: 2%;
+
+    @include respond(tab-port) {
+      width: 30%;
+      margin-right: 0;
+    }
+
+    @include respond(phone) {
+      width: 100%;
+      margin-right: 0;
+    }
+  }
+
+  .list-container {
+    width: 65%;
+
+    @include respond (tab-port) {
+      width: 70%;
+    }
+
+    @include respond(phone) {
+      width: 100%;
+    }
+  }
+}
+
+
+///////////
+// MODAL
+
+.modal-1 {
+  z-index: 999;
+}
+
+.modal-body {
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+    mat-form-field {
+      display: block;
+      margin-bottom: 1rem;
+      width: 80%;
+    }
+  }
+
+  .confirm-button {
+    //background-image: linear-gradient('to bottom right', $color-primary-light, $color-primary);
+    background-color: $color-primary;
+    color: white;
+    padding: 1rem;
+  }
+}

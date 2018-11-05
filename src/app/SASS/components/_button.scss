@@ -1,0 +1,106 @@
+@import "../abstracts/variables";
+
+.btn {
+  /*link pseudoclass, special state of selector */
+  &:link,
+  &:visited{
+    text-decoration: none;
+    text-transform: uppercase;
+    /*first are top and bottom, second are left and right*/
+    padding: 1.5rem 4rem;
+    display: inline-block;
+    border-radius: 10rem;
+    /*this refers to all the animations that will be added to the initial state*/
+    /*the transitions property needs to be on the initial state*/
+    transition: all 0.2s;
+    position: relative;
+    font-size: $default-font-size;
+  }
+
+  &:hover {
+    transform: translateY(-0.3rem);
+    /*1st offset in x direction, 2nd y offset, 3rd blury shadow we want to see*/
+    box-shadow: 0 1rem 2rem rgba($color-black,.2);
+    /* we want to see the after button when we hover the button*/
+    &::after {
+      /*what scale does is increase the element*/
+      /*there's scale, scaleX and scaleY*/
+      transform: scaleX(1.5) scaleY(1.4);
+      /*this makes the ::after button go invisible after the 0.4 seconds in the transition*/
+      opacity: 0;
+    }
+  }
+
+  /*When we click the button that is called the active state*/
+  /*this transform state is always related to the hover state, not the hover state.*/
+  &:active {
+    transform: translateY(-0.1rem);
+    box-shadow: 0 0.5rem 1rem rgba($color-black,.2);
+  }
+
+  &--white {
+    background-color: $color-white;
+    color: #777;
+    &::after {
+      background-color: $color-white;
+    }
+  }
+
+  &--grey {
+    background-color: $color-secondary;
+    color: white;
+  }
+
+  &--primary {
+    background-color: $color-primary;
+    color: white;
+  }
+
+  /*the after pseudo element adds an element right behind the elemetn*/
+  &::after {
+    /*we always need to specify content and display properties*/
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s;
+  }
+
+
+
+  &--animated {
+    animation: moveInBottom 2s ease-out .75s;
+    /*the 0% stats will be applied before the animation starts*/
+    animation-fill-mode: backwards;
+  }
+}
+
+.btn-text {
+  &:link,
+  &:visited {
+    font-size: $default-font-size;
+    color: $color-primary;
+    display: inline-block;
+    text-decoration: none;
+    border-bottom: 1px solid $color-primary;
+    padding: 3px;
+    transition: all .2s;
+  }
+
+  &:hover {
+    background-color: $color-primary;
+    color: $color-white;
+    box-shadow: 0 1rem 2rem rgba($color-black, .15);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    box-shadow: 0 .5rem 1 rem rgba($color-black, .15);
+    transform: translateY(0);
+  }
+}

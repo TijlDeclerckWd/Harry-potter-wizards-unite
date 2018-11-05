@@ -1,0 +1,54 @@
+<ng-container *ngIf="postsLoaded ; else spinner">
+  <ng-container *ngIf="posts.length > 0; else noPostsYet">
+    <div class="list-options">
+      <div class="sort-menu-container">
+        <button mat-button class="mat-menu-button" [matMenuTriggerFor]="menu">{{displayOptions}} <i class="fa fa-caret-down"></i></button>
+        <mat-menu #menu="matMenu">
+          <button (click)="sortListItems('Top')" mat-menu-item>Top</button>
+          <button (click)="sortListItems('Newest')" mat-menu-item>Newest</button>
+          <button (click)="sortListItems('Oldest')" mat-menu-item>Oldest</button>
+        </mat-menu>
+      </div>
+      <div (click)="refreshList()" class="refresh">
+        <i class="fa fa-refresh"></i>
+      </div>
+
+    </div>
+
+    <ul class="list">
+      <li [routerLink]="['/forum/p', post._id]" *ngFor="let post of posts" class="list-item">
+        <div class="profile-picture-container">
+          <img *ngIf="post.user.profilePicture.uploaded" [src]="'/assets/images/profile-pictures/' + post.user.profilePicture.name" class="profile-picture" alt="profile-pic">
+          <img *ngIf="!post.user.profilePicture.uploaded" src="/assets/images/blank-profile-picture.png" class="profile-picture" alt="profile-pic">
+        </div>
+        <div class="title-container">
+          <h4 class="title">{{ post.title }}</h4>
+          <p *ngIf="post.replies.length > 0; else noReplies" class="last-reply-message"><i class="fa fa-reply"></i>{{ getLastReply(post.replies)}}</p>
+          <ng-template #noReplies>
+            <p  class="no-replies">{{ getPostTime(post) }}</p>
+          </ng-template>
+        </div>
+        <div [ngStyle]="{
+          'background-color': determineBgcLabel(post.category)
+        }" class="label">
+          <span class="label__text">{{post.category}}</span>
+        </div>
+        <div class="replies-container">
+          <i class="fa fal fa-comment"></i>
+          <p class="number-of-replies">{{ post.replies.length }}</p>
+        </div>
+
+      </li>
+    </ul>
+  </ng-container>
+</ng-container>
+
+<ng-template #noPostsYet>
+  <div class="no-posts">
+    <h3>There haven't been any discussions in this section so far. Create the first one!</h3>
+  </div>
+</ng-template>
+
+<ng-template #spinner>
+  <mat-spinner [diameter]="50"></mat-spinner>
+</ng-template>

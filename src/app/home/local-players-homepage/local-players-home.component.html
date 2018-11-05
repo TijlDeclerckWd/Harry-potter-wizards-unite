@@ -1,0 +1,63 @@
+<section id="section-locals" class="section-locals">
+    <div class="u-center-text heading-container">
+        <h2 class="heading-secondary">
+            Local players near you
+        </h2>
+      <h4 class="heading-4">Find other players in your neighbourhood and team up! </h4>
+    </div>
+    <div class="row">
+      <ng-container *ngIf="nearbyPlayers; else spinner">
+        <div *ngFor="let player of nearbyPlayers" class="col-1-of-3">
+          <div class="card">
+            <div [ngClass]="{
+        'bgc-ravenclaw': player.locationObj.user.house === 'Ravenclaw',
+        'bgc-slytherin': player.locationObj.user.house === 'Slytherin',
+        'bgc-hufflepuff': player.locationObj.user.house === 'Hufflepuff',
+        'bgc-gryffindor': player.locationObj.user.house === 'Gryffindor'
+      }" class="card__side card__side--front">
+              <div>
+                <img *ngIf="player.locationObj.user?.profilePicture.uploaded" class="card__img img-fluid" [src]="'assets/images/profile-pictures/' + player.locationObj.user.profilePicture.name"  alt="some guy's picture">
+                <img *ngIf="player.locationObj.user && !player.locationObj.user?.profilePicture.uploaded" class="card__img img-fluid" src="assets/images/blank-profile-picture.png"  alt="no profile picture">
+
+              </div>
+              <h3 class="card__text">{{player.locationObj.user.username}}</h3>
+              <h3 class="card__text">{{player.distanceInKMS | number:'1.0-2'}} KM away</h3>
+
+            </div>
+            <div class="card__side card__side--back card__side--back-3">
+              <div class="info">
+                <ul class="info__list">
+                  <li class="info__list-item">{{player.locationObj.user.firstName}} {{player.locationObj.user.lastName}}</li>
+                  <li class="info__list-item">28 years old</li>
+                  <li class="info__list-item">{{ player.locationObj.user.house }}</li>
+                  <li class="info__list-item">Last login: {{ player.locationObj.user.lastLogin | date}} </li>
+                </ul>
+              </div>
+              <a href="#" [routerLink]="['/profile', player.locationObj.user._id]" class="btn btn--animated">Visit profile</a>
+              <a href="#popup" (click)="changeDestinationUser(player.locationObj.user)" class="btn btn--animated">Contact {{ player.locationObj.user.username }}</a>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+      <ng-template #spinner>
+        <div class="spinner-container">
+          <mat-spinner></mat-spinner>
+        </div>
+      </ng-template>
+      <div class="error-message-container" *ngIf="!nearbyPlayers && errorMessage">
+          <p class="error-message">{{errorMessage}}</p>
+        <button class="error-btn" (click)="refreshPage()">Refresh page</button>
+      </div>
+    </div>
+    <button *ngIf="isLoggedIn() && nearbyPlayers" routerLink="locateLocals" class="btn btn-block btn--dark-grey">Find More Local Players</button>
+</section>
+
+
+<!-- ### POPUP ### -->
+
+<div class="popup" id="popup">
+    <div class="popup__content">
+        <a href="#section-locals" class="popup__close">&times;</a>
+        <send-pm [destinationUser]="destinationUser"></send-pm>
+    </div>
+</div>

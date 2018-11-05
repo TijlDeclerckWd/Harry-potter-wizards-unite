@@ -1,0 +1,21 @@
+@import "../../SASS/abstracts/variables";
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+  mat-form-field {
+    display: block;
+    margin-bottom: 1rem;
+    width: 80%;
+  }
+}
+
+.confirm-button {
+  //background-image: linear-gradient('to bottom right', $color-primary-light, $color-primary);
+  background-color: $color-primary;
+  color: white;
+  padding: 1rem;
+}

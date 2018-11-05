@@ -1,0 +1,143 @@
+<div class="cont">
+
+  <!-- this creates a google map on the page with the given lat/lng from -->
+  <!-- the component as the initial center of the map: -->
+  <div *ngIf="loadedLocations; else spinner" class="row">
+    <div
+      [ngClass]="{
+        'col-1-of-1': !markerClicked,
+        'col-1-of-2': markerClicked
+        }"
+      id="map-section"
+      [ngStyle]="{
+        margin: screenWidth < 900 ? 0 : auto
+      }">
+
+      <!-- this is the overlay that will be used when people open the page on smaller devices -->
+      <div
+        class="profile-mobile"
+        *ngIf="screenWidth < 900"
+        [ngClass]="{
+              'visible': markerClicked,
+              'not-visible': !markerClicked
+            }">
+        <i class="fa fa-close profile-mobile__close-sign" style="font-size:24px" (click)="closeProfile()"></i>
+        <div class="profile-mobile__img-container">
+          <img *ngIf="focussedUser?.profilePicture.uploaded" class="profile-mobile__img" [src]="'assets/images/profile-pictures/' + focussedUser?.profilePicture.name" alt="profile picture">
+          <img *ngIf="!focussedUser?.profilePicture.uploaded"
+               src="assets/images/blank-profile-picture.png" alt="No profile picture" class="profile-mobile__img">
+        </div>
+        <ul class="profile-mobile__list" *ngIf="focussedUser">
+          <li class="profile-mobile__list-item">{{focussedUser.username}}</li>
+          <li class="profile-mobile__list-item">{{focussedUser.house}}</li>
+          <li class="profile-mobile__list-item">{{focussedUser.birthDate | age}}</li>
+          <li class="profile-mobile__list-item">Speciality: Potions</li>
+        </ul>
+        <div class="profile-mobile__btn-container" *ngIf="focussedUser">
+          <button [routerLink]="['/profile', focussedUser._id]" class="profile-mobile__btn profile-mobile__btn--profile">Visit Profile</button>
+          <button (click)="openModal(content)" class="profile-mobile__btn profile-mobile__btn--PM">Send Message</button>
+        </div>
+      </div>
+
+      <div class="distance">
+        <div (click)="changeDistanceDisplayStatus()" class="distance__btn distance__btn--chosen">{{ distance }} km</div>
+        <div (click)="changeDistance(1)" [ngClass]="{'show-distances': distancesDisplayed}" class="distance__btn distance__btn--1">1 km</div>
+        <div (click)="changeDistance(5)" [ngClass]="{'show-distances': distancesDisplayed}" class="distance__btn distance__btn--5">5 km</div>
+        <div (click)="changeDistance(20)" [ngClass]="{'show-distances': distancesDisplayed}" class="distance__btn distance__btn--20">20 km</div>
+        <div (click)="changeDistance(50)" [ngClass]="{'show-distances': distancesDisplayed}" class="distance__btn distance__btn--50">50 km</div>
+        <div (click)="changeDistance(100)" [ngClass]="{'show-distances': distancesDisplayed}" class="distance__btn distance__btn--100">100 km</div>
+      </div>
+
+      <agm-map
+        [latitude]="lat"
+        [longitude]="lng"
+        [fullscreenControl]="true"
+        [zoom]="mapZoom"
+        [scaleControl]="true"
+      >
+        <agm-marker
+          [iconUrl]="personalIcon"
+          [latitude]="lat"
+          [longitude]="lng">
+        </agm-marker>
+
+        <agm-marker
+          *ngFor="let marker of filteredMarkers"
+          [latitude]="marker.latitude"
+          [longitude]="marker.longitude"
+          (markerClick)="onMarkerClick(marker.user)"
+          [iconUrl]="customIcon(marker.user.house)"
+
+        >
+        </agm-marker>
+      </agm-map>
+    </div>
+    <div class="col-1-of-2" *ngIf="screenWidth > 900">
+      <div (mouseenter)="showData()" (mouseleave)="hideData()" class="profileSection" [ngClass]="{
+      'visible': markerClicked,
+      'not-visible': !markerClicked}
+    ">
+        <!--there should be a profile picture displayed here-->
+        <!-- Other details that we want to display are conencted to the game, such details are currently unknown as we don't know more about the game-->
+        <div [ngClass]="{
+              'profileSection__header--ravenclaw': houseFocussedUser('Ravenclaw'),
+              'profileSection__header--gryffindor': houseFocussedUser('Gryffindor'),
+              'profileSection__header--slytherin': houseFocussedUser('Slytherin'),
+              'profileSection__header--hufflepuff': houseFocussedUser('Hufflepuff')
+            }" class="profileSection__header" *ngIf="markerClicked && focussedUser">
+          <img
+            [ngClass]="{'profileSection__img--start': !enteredProfilePic, 'profileSection__img--end': enteredProfilePic}"
+            class="profileSection__img"
+            *ngIf="!focussedUser.profilePicture.uploaded"
+            src="assets/images/blank-profile-picture.png"
+            alt="no profile picture">
+          <img
+            [ngClass]="{'profileSection__img--start': !enteredProfilePic, 'profileSection__img--end': enteredProfilePic}"
+            (mouseenter)="showData()"
+            class="profileSection__img"
+            *ngIf="focussedUser?.profilePicture.uploaded" [src]="'assets/images/profile-pictures/' + focussedUser?.profilePicture.name" alt="the profile picture">
+          <div
+            [ngClass]="{'header-box--top': enteredProfilePic, 'start-pos--top': !enteredProfilePic}"
+            class="header-box">
+            <h3 class="profileSection__data">{{ focussedUser?.username }}</h3>
+            <h3 class="profileSection__data" *ngIf="!enteredProfilePic"><b>See More</b></h3>
+          </div>
+          <div
+            [ngClass]="{'header-box--right': enteredProfilePic, 'start-pos': !enteredProfilePic}"
+            class="header-box">
+            <h3 class="profileSection__data">Slytherin</h3>
+          </div>
+          <div
+            [ngClass]="{'header-box--bottom': enteredProfilePic, 'start-pos': !enteredProfilePic}"
+            class="header-box">
+            <h3 class="profileSection__data">{{ focussedUser?.birthDate | age}}</h3>
+          </div>
+          <div
+            [ngClass]="{'header-box--left': enteredProfilePic, 'start-pos': !enteredProfilePic}"
+            class="header-box">
+            <h3 class="profileSection__data">Speciality: Potions</h3>
+          </div>
+          <button ngbTooltip="Send a message" (click)="openModal(content)" [ngClass]="{'profileSection__btn--first': enteredProfilePic, 'start-pos': !enteredProfilePic}" class="btn profileSection__btn">
+            <i class="fa fa-envelope"></i>
+          </button>
+          <button
+            [ngClass]="{'profileSection__btn--sec': enteredProfilePic, 'start-pos': !enteredProfilePic}"
+            ngbTooltip="Visit profile"
+            class="btn profileSection__btn"
+            [routerLink]="['/profile', focussedUser?._id]"><i class="fa fa-user"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-template class="spinner-template" #spinner>
+    <mat-spinner></mat-spinner>
+  </ng-template>
+</div>
+
+
+<!-- ##### POPUP ##### -->
+
+<ng-template #content let-modal>
+    <send-pm [destinationUser]="focussedUser" (closeModal)="closeModal(content)"></send-pm>
+</ng-template>

@@ -1,0 +1,35 @@
+<div class="navigation">
+    <input [checked]="checkboxChecked" type="checkbox" class="navigation__checkbox">
+    <label (click)="changeCheckboxStatus()" class="navigation__button navigation__button--smaller">
+        <i class="fa fa-user fa-3"></i>
+    </label>
+    <div class="navigation__background navigation__background--smaller">&nbsp;</div>
+
+    <nav class="navigation__nav navigation__nav--smaller">
+        <ul
+          class="navigation__list"
+          [ngStyle]="{
+            width: subMenuOpened ? '25%' : '100%'
+          }">
+            <div class="li-container">
+                <li *ngIf="!isLoggedIn()"  class="navigation__item"><a (click)="changeDisplayedComponent('login')" routerLink="" class="navigation__link">Login</a></li>
+                <li *ngIf="isLoggedIn()" class="navigation__item"><a (click)="logout()" routerLink="" class="navigation__link">Logout</a></li>
+                <li *ngIf="!isLoggedIn()" class="navigation__item"><a (click)="changeDisplayedComponent('signup')" routerLink="" class="navigation__link">Sign Up</a></li>
+                <li *ngIf="isLoggedIn()" class="navigation__item"><a (click)="changeCheckboxStatus()" [routerLink]="['profile', getUserId()]" class="navigation__link">Profile</a></li>
+            </div>
+        </ul>
+        <div
+          class="navigation__window"
+          [ngStyle]="{
+            width: subMenuOpened ? '75%' : '0%',
+            opacity: subMenuOpened ? '100%' : '0%',
+            visibility: subMenuOpened ? 'visible' : 'hidden'}">
+            <app-login
+              *ngIf="displayedComponent === 'login'"
+              (signup)="changeDisplayedComponent('signup')"
+              (closeSubmenu)="closeSubmenu()"></app-login>
+            <app-sign-up *ngIf="displayedComponent === 'signup'"></app-sign-up>
+            <profile-nav *ngIf="displayedComponent === 'profile'"></profile-nav>
+        </div>
+    </nav>
+</div>

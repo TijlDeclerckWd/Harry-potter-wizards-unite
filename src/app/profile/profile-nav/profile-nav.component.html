@@ -1,0 +1,38 @@
+<div class="img img__container">
+    <img class="img__logo" src="assets/images/Slytherin-logo.png" alt="logo">
+    <img class="img__logo img__logo--sec" src="assets/images/Slytherin-logo.png" alt="logo">
+
+    <img *ngIf="user && user.profilePicture.uploaded"  class="img__profile-picture" [src]="'assets/images/profile-pictures/' + user.profilePicture.name" alt="profile-pic">
+  <img *ngIf="user && !user.profilePicture.uploaded"  class="img__profile-picture" src="assets/images/blank-profile-picture.png" alt="profile-pic">
+
+    <label for="uploadProfilePic" class="uploadLabel">
+        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+    </label>
+    <input type="file" id="uploadProfilePic" style="display: none" (change)="uploadProfilePic($event.target.files)">
+
+    <h2 class="img__title">Tijl Declerck</h2>
+</div>
+
+<div class="content row">
+    <div class="col-1-of-2">
+        <div class="content__category">
+            <h5 class="content__sub-title">House</h5>
+            <h6 class="content__sub-text">Slytherin</h6>
+        </div>
+        <div class="content__category">
+            <h5 class="content__sub-title">Location</h5>
+            <h6 class="content__sub-text">Brussels, Belgium</h6>
+        </div>
+    </div>
+    <div class="col-1-of-2">
+        <div class="content__category">
+            <h5 class="content__sub-title">Age</h5>
+            <h6 class="content__sub-text">28</h6>
+        </div>
+        <div class="content__category">
+            <h5 class="content__sub-title">House</h5>
+            <h6 class="content__sub-text">Slytherin</h6>
+        </div>
+    </div>
+</div>
+

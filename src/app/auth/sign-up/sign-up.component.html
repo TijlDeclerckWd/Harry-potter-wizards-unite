@@ -1,0 +1,108 @@
+<div class="form-container">
+    <form class="form" [formGroup]="mySignupForm" (ngSubmit)="onSignupSubmit()">
+        <h2 class="heading-container"><span class="heading-secondary">Sign up</span></h2>
+        <div class="form__core">
+          <div class="form__group">
+            <mat-form-field>
+              <input matInput placeholder="First name" [formControl]="firstName">
+              <mat-error *ngIf="firstName.invalid && firstName.hasError('required')">First name is required</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="form-group form__group">
+            <mat-form-field>
+              <input matInput placeholder="Last name" [formControl]="lastName">
+              <mat-error *ngIf="firstName.invalid && firstName.hasError('required')">Last name is required</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="form-group form__group">
+            <mat-form-field>
+              <input matInput placeholder="Password" [formControl]="password1" type="password">
+              <mat-error *ngIf="password1.invalid && password1.hasError('required')">Password is required</mat-error>
+              <mat-error *ngIf="password1.invalid && password1.hasError('minlength') && !password1.hasError('required')">Password needs to have at least 6 characters</mat-error>
+              <mat-error *ngIf="password1.invalid && password1.hasError('maxlength')">Password needs to be less than 15 characters</mat-error>
+              <mat-error *ngIf="password1.invalid && password1.hasError('pattern') && !password1.hasError('minlength') && !password1.hasError('maxlength')">Password needs to have letters and numbers</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="form-group form__group">
+            <mat-form-field>
+              <input matInput placeholder="Repeat password" [formControl]="password2" type="password">
+              <mat-error *ngIf="password2.invalid && password2.hasError('required')">Password is required</mat-error>
+              <mat-error *ngIf="password2.hasError('isNotEqual') && !password2.hasError('required')">Passwords need to match</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="form__group form-group">
+            <mat-form-field>
+              <input matInput (keyup)="checkUniqueUsername()" placeholder="Enter your username" [formControl]="username" required>
+              <mat-error *ngIf="username.invalid && username.hasError('required')">Username is required</mat-error>
+              <mat-error *ngIf="username.invalid && username.hasError('minlength') && !username.hasError('required')">Username should have at least 5 characters</mat-error>
+              <mat-error *ngIf="username.invalid && username.hasError('maxlength')">Username shouldn't have more than 15 characters</mat-error>
+              <mat-error *ngIf="
+              username.invalid
+              && !username.hasError('required')
+              && !username.hasError('minlength')
+              && !username.hasError('maxlength')
+              && username.hasError('pattern')">Username is required</mat-error>
+              <mat-error *ngIf="username.invalid && username.hasError('uniqueUser')">This username already exists</mat-error>
+            </mat-form-field>
+            <!--<input-->
+              <!--id="username"-->
+              <!--(keyup)="checkUniqueUsername()"-->
+              <!--[class.ng-invalid]="uniqueUsernameMessage"-->
+              <!--[class.ng-valid]="!uniqueUsernameMessage && (username?.dirty || username?.touched) && !username?.errors"-->
+              <!--name="username"-->
+              <!--class="form__input form-control"-->
+              <!--type="text"-->
+              <!--placeholder="Username"-->
+              <!--formControlName="username"-->
+            <!--&gt;-->
+          </div>
+          <div class="form__group form-group">
+            <mat-form-field>
+              <input matInput [formControl]="birthDate" [matDatepicker]="picker" placeholder="Date of birth (mm/dd/yyyy) ">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+              <mat-error *ngIf="birthDate.invalid && birthDate.hasError('required')">Birth date is required</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="form-group form__group">
+            <mat-form-field>
+              <input matInput placeholder="Email" (blur)="checkUniqueEmail()" [formControl]="email" type="email">
+              <mat-error *ngIf="email.invalid && email.hasError('required')">Email is required</mat-error>
+              <mat-error *ngIf="email.invalid && email.hasError('email') && !email.hasError('required')">Please enter a valid email address</mat-error>
+              <mat-error *ngIf="email.invalid && email.hasError('uniqueEmail') && !email.hasError('email') && !email.hasError('required')">Email has to be unique</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="form__group">
+            <mat-form-field>
+              <mat-select #select placeholder="House" [formControl]="house">
+                <mat-option value="Slytherin">Slytherin</mat-option>
+                <mat-option value="Hufflepuff">Hufflepuff</mat-option>
+                <mat-option value="Ravenclaw">Ravenclaw</mat-option>
+                <mat-option value="Gryffindor">Gryffindor</mat-option>
+              </mat-select>
+              <mat-error *ngIf="house.invalid && house.hasError('required')">House is required</mat-error>
+              <mat-error *ngIf="house.invalid && house.hasError('isInvalidHouse')">Please enter valid house</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="form__group">
+            <mat-form-field>
+              <mat-select #select placeholder="Country" [formControl]="country">
+                <mat-option *ngFor="let country of countries" [value]="country">{{country}}</mat-option>
+              </mat-select>
+              <mat-error *ngIf="country.invalid && country.hasError('required')">Country is required</mat-error>
+            </mat-form-field>
+          </div>
+
+          <re-captcha (resolved)="$event && resolved($event)" siteKey="6Ld3m3YUAAAAAEwExI-7AXZskjHuAgbxA3--4amu" formControlName="captcha"></re-captcha>
+        </div>
+        <div class="form__buttons-container">
+          <div class="toggle-container">
+            <span>login</span>
+            <mat-slide-toggle [(ngModel)] = "checked" [ngModelOptions]="{standalone: true}" (change)="navigateToLoginPage()"></mat-slide-toggle>
+            <span>sign up</span>
+          </div>
+          <p *ngIf="serverError" class="server-error">Something went wrong when we tried to register your account. Please try again later. </p>
+          <button [disabled]="submittedForm" class="btn btn-secondary confirm-button" (click)="onSignupSubmit()">Submit</button>
+        </div>
+    </form>
+</div>

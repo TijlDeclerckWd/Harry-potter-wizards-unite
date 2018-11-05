@@ -1,0 +1,150 @@
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+  margin-bottom: 6rem; }
+  .heading-primary--main {
+    display: block;
+    font-size: 7.5rem;
+    font-weight: 700;
+    letter-spacing: 2.3rem;
+    margin-bottom: 3rem;
+    animation: moveInLeft 2s ease-out;
+    /*fix for glitch that shocks animation*/
+    backface-visibility: hidden; }
+    @media (max-width: 37.5em) {
+      .heading-primary--main {
+        letter-spacing: 1.5rem;
+        font-size: 3.5rem;
+        margin-bottom: 1.5rem; } }
+  .heading-primary--sub {
+    display: block;
+    font-size: 3rem;
+    font-weight: 400;
+    letter-spacing: 1rem;
+    animation: moveInRight 2s ease-out;
+    backface-visibility: hidden;
+    margin-bottom: 1.5rem;
+    color: #fff; }
+    @media (max-width: 37.5em) {
+      .heading-primary--sub {
+        letter-spacing: .75rem;
+        font-size: 2rem;
+        margin-bottom: 1rem; } }
+
+.heading-secondary {
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  display: inline-block;
+  background-image: linear-gradient(to right, #3388B3, #000027);
+  -webkit-background-clip: text;
+  color: transparent;
+  letter-spacing: 2px;
+  transition: all .2s; }
+  @media (max-width: 56.25em) {
+    .heading-secondary {
+      font-size: 3rem; } }
+  @media (max-width: 37.5em) {
+    .heading-secondary {
+      font-size: 2.5rem; } }
+  .heading-secondary:hover {
+    transform: skewY(2deg) skewX(15deg) scale(1.1);
+    text-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.2); }
+
+.heading-tertiary {
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-transform: uppercase; }
+
+.paragraph {
+  font-size: 1.6rem; }
+  .paragraph:not(:last-child) {
+    margin-bottom: 3rem; }
+
+.jumbotron {
+  height: 100vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://i.amz.mshcdn.com/-7R3bLC1xTVhrjc86pBeYAogXFY=/950x534/filters:quality(90)/https%3A%2F%2Fblueprint-api-production.s3.amazonaws.com%2Fuploads%2Fcard%2Fimage%2F760683%2F2117d274-d2cf-46b9-b60c-698d65361438.jpg");
+  background-size: cover;
+  position: relative;
+  padding: 5rem;
+  margin-bottom: 2rem;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; }
+  .jumbotron .heading-primary {
+    opacity: .8; }
+  @media (max-width: 37.5em) {
+    .jumbotron {
+      -webkit-clip-path: polygon(0 0, 100% 0, 100% 90vh, 0 100%);
+      clip-path: polygon(0 0, 100% 0, 100% 90vh, 0 100%);
+      background-position: center top; } }
+  .jumbotron .navigation-container {
+    border-radius: 20px;
+    background-color: #fff;
+    font-size: 2rem;
+    width: 70%;
+    margin: 2rem auto 2rem auto;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    padding: 1rem;
+    background-image: linear-gradient(to bottom right, #ccc, #666);
+    opacity: .8; }
+    .jumbotron .navigation-container button {
+      outline: none; }
+    .jumbotron .navigation-container:hover {
+      opacity: 1; }
+    .jumbotron .navigation-container > * {
+      background-color: transparent;
+      border: none;
+      flex: 1 0 0;
+      cursor: pointer;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 1px; }
+      .jumbotron .navigation-container > *:hover {
+        transform: translateY(-0.2rem); }
+      .jumbotron .navigation-container > *:not(:last-child) {
+        border-right: 1px solid #444; }
+  .jumbotron .discover-more-container {
+    position: relative;
+    top: 10rem;
+    opacity: .8;
+    cursor: pointer; }
+    .jumbotron .discover-more-container:hover {
+      opacity: 1; }
+    .jumbotron .discover-more-container .discover-more {
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 2rem; }
+    .jumbotron .discover-more-container .fa-arrow-circle-down {
+      font-size: 6rem;
+      color: #fff; }
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(10rem); }
+  80% {
+    transform: translateX(-1rem); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-10rem); }
+  80% {
+    transform: translateX(1rem); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
+.popup__content {
+  width: 50%; }
+
+/*# sourceMappingURL=home.component.css.map */

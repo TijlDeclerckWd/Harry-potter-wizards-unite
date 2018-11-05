@@ -1,0 +1,14 @@
+.create-forum-section-container {
+  width: 70%;
+  text-align: center;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  .create-forum-section-container input {
+    margin-bottom: 3rem; }
+  .create-forum-section-container .btn {
+    display: block;
+    width: 50%; }
+
+/*# sourceMappingURL=create-forum-section.component.css.map */

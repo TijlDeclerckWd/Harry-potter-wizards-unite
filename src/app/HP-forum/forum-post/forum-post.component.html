@@ -1,0 +1,79 @@
+<ng-container *ngIf="post; else spinner">
+  <forum-header [post]="post"></forum-header>
+  <div class="main-section">
+    <div class="list-section">
+      <ul class="post-list">
+        <li class="post">
+          <div class="profile-pic-container">
+            <img *ngIf="post.user.profilePicture.uploaded" class="profile-pic" [src]="'/assets/images/profile-pictures/' + post.user.profilePicture.name" alt="profile-pic">
+          </div>
+          <div class="data-container">
+            <h4 class="poster" [routerLink]="['/profile', post.user._id]">{{ post.user.username }} <span class="date-post">{{ post.date | amTimeAgo}}</span></h4>
+            <div #postContentEl class="content"></div>
+          </div>
+        </li>
+        <ng-container *ngIf="post">
+          <forum-reply
+            *ngFor="let reply of post.replies | slice:start:end"
+            [reply]="reply"
+            (deleteReply)="deleteReply($event)"
+            (editReply)="editReply($event)"
+            (quoteReply)="quoteReply($event)">
+          </forum-reply>
+        </ng-container>
+      </ul>
+      <div *ngIf="post" class="write-reply-container">
+        <span *ngIf="quotedReply.selected" class="quote-message">You are quoting a reply from {{ quotedReply.obj.username }} <span class="undo" (click)="resetQuoteReply()">undo</span></span>
+        <mat-form-field *ngIf="isLoggedIn(); else loginButton">
+        <textarea matInput
+                  #replyInputEl
+                  class="reply-textarea"
+                  cdkTextareaAutosize
+                  placeholder="Write a reply..."
+                  #autosize="cdkTextareaAutosize"
+                  cdkAutosizeMinRows="2"
+                  cdkAutosizeMaxRows="8"
+                  [(ngModel)]="replyInput"
+                  (keyup.enter)="sendReply()">
+        </textarea>
+          <button mat-button *ngIf="replyInput" matSuffix mat-icon-button aria-label="Clear" (click)="replyInput=''">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+        <ng-template #loginButton >
+          <button (click)="login()" class="btn textarea-login-btn">
+            Log in to reply to this discussion
+          </button>
+        </ng-template>
+      </div>
+    </div>
+
+
+    <div class="options">
+      <div #stickyContainer class="sticky-container" [ngClass]="{'sticky': stickyOptions}">
+        <button *ngIf="!isLoggedIn()" (click)="login()" class="login-btn btn">Log in to reply</button>
+        <button *ngIf="isLoggedIn()" class="reply-btn btn" (click)="scrollToInput()">Reply</button>
+        <button *ngIf="isMyPost()" class="reply-btn btn" (click)="deletePost()">Delete this post</button>
+
+        <ngb-pagination
+          *ngIf=" post && post.replies.length > 20"
+          [collectionSize]="post.replies.length"
+          class="d-flex justify-content-center"
+          [(page)]="page" [maxSize]="calculateNumberOfPages()"
+          (pageChange)="onPageChange()"
+          [pageSize]="20"
+          [rotate]="true"
+          [ellipses]="false"
+          [boundaryLinks]="true">
+        </ngb-pagination>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+<ng-template #spinner>
+  <mat-spinner></mat-spinner>
+</ng-template>
+
+
+

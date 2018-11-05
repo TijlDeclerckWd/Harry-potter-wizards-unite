@@ -1,0 +1,27 @@
+<div class="login-page">
+  <div class="form-container">
+    <div class="header-box">
+      <h3 class="heading-secondary">User Login</h3>
+    </div>
+    <form *ngIf="!loading; else spinner" [formGroup]=loginForm (ngSubmit)="onLogin()" class="form">
+      <div class="form__group">
+        <input class="form__input" name="email" id="email" placeholder="Email:" type="text" formControlName="email">
+        <input class="form__input" type="password" id="password" placeholder="Password:" name="password" formControlName="password">
+      </div>
+      <h4 class="form__error" *ngIf="loginError">{{ loginError }}</h4>
+      <button type="submit" class="btn btn--animated form__btn ">Log In</button>
+    </form>
+    <ng-template #spinner>
+      <div class="spinner-container">
+        <mat-spinner diameter="70"></mat-spinner>
+      </div>
+    </ng-template>
+  </div>
+
+    <div class="login-page__footer">
+        <p class="login-page__footer-text" (click)="signup.emit()">New? Create an account!</p>
+    </div>
+</div>
+
+
+

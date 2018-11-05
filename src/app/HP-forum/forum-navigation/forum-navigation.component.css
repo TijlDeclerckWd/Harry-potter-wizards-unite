@@ -1,0 +1,104 @@
+.navigation {
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; }
+  @media (max-width: 37.5em) {
+    .navigation {
+      display: none; } }
+  .navigation__btn {
+    width: 90%;
+    border-radius: 10px;
+    background-color: #002F5A;
+    color: #fff;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    transition: .3s all; }
+    .navigation__btn:hover {
+      transform: translateY(-0.3rem);
+      box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
+  .navigation__list {
+    list-style: none;
+    width: 90%; }
+  .navigation__list-item {
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    outline: none; }
+    .navigation__list-item--news {
+      margin-top: 2rem; }
+    .navigation__list-item .colored-box {
+      border-radius: 7px;
+      width: 2rem;
+      height: 2rem;
+      display: inline-block;
+      margin-right: 0.5rem; }
+      .navigation__list-item .colored-box--blue {
+        background-color: blue; }
+      .navigation__list-item .colored-box--yellow {
+        background-color: yellow; }
+      .navigation__list-item .colored-box--green {
+        background-color: green; }
+      .navigation__list-item .colored-box--purple {
+        background-color: purple; }
+      .navigation__list-item .colored-box--orange {
+        background-color: orange; }
+
+.navigation-phone {
+  min-height: 3rem;
+  display: none; }
+  @media (max-width: 37.5em) {
+    .navigation-phone {
+      display: block; } }
+  .navigation-phone__list {
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap; }
+  .navigation-phone__list-item {
+    width: 25%;
+    padding: 1.5rem;
+    background-color: red;
+    color: white;
+    font-weight: bolder;
+    text-align: center;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    outline: none; }
+    .navigation-phone__list-item--special {
+      width: 50%; }
+    .navigation-phone__list-item--general {
+      background-color: #002F5A; }
+    .navigation-phone__list-item--news {
+      background-color: #cc8400; }
+    .navigation-phone__list-item--quests {
+      background-color: #004d00; }
+    .navigation-phone__list-item--country {
+      background-color: #cccc00;
+      color: #000;
+      width: 50%; }
+    .navigation-phone__list-item--tipsntricks {
+      background-color: #4d004d; }
+  .navigation-phone .add-discussion-btn {
+    position: absolute;
+    left: 2%;
+    top: 2%;
+    width: 4rem;
+    height: 4rem;
+    background-color: #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    .navigation-phone .add-discussion-btn .fa-plus {
+      font-size: 2rem; }
+
+/*# sourceMappingURL=forum-navigation.component.css.map */

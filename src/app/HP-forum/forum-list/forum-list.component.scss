@@ -1,0 +1,160 @@
+@import "../../SASS/abstracts/variables";
+@import "../../SASS/abstracts/mixins";
+
+.list-options {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-around;
+
+  @include respond(phone) {
+    justify-content: space-between;
+  }
+
+  .sort-menu-container {
+
+    &:hover {
+      color: $color-white;
+    }
+
+    .mat-menu-button {
+      background-color: #bbb;
+      outline: none;
+      font-size: 1.5rem;
+
+      @include respond(phone) {
+        margin-left: 30%;
+      }
+
+      .fa-caret-down {
+        font-size: 2rem;
+        margin-left: 0.5rem;
+      }
+    }
+  }
+
+  .refresh {
+    width: 5%;
+    background-color: #bbb;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+      background-color: darken(#bbb, 15%);
+      color: $color-white;
+    }
+
+    @include respond(phone) {
+      margin-right: 5%;
+    }
+
+    .fa-refresh {
+      font-size: 1.5rem;
+
+    }
+  }
+
+
+}
+
+.list {
+  list-style: none;
+  .list-item {
+    display: flex;
+    margin-top: 2rem;
+    justify-content: space-around;
+    align-items: center;
+    outline: none;
+
+    @include respond(phone) {
+      padding: 1rem;
+    }
+
+    &:hover {
+      background-color: #d6f5f5;
+    }
+
+    .profile-picture-container{
+      flex: 0 0 15%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .profile-picture {
+        border-radius: 50%;
+        height: 6rem;
+        width: 6rem;
+      }
+    }
+
+    .title-container {
+      flex: 1 0 0;
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      justify-content: center;
+
+      .title {
+        @include respond(tab-port) {
+          font-size: 1.8rem;
+        }
+      }
+
+      .last-reply-message, .no-replies {
+        margin-bottom: 0;
+        @include respond(tab-port) {
+          font-size: 1.2rem;
+        }
+      }
+
+      .fa-reply {
+        margin-right: .5rem;
+      }
+    }
+
+    .label {
+      flex: 0 0 15%;
+      margin-right: 5%;
+      border-radius: 5px;
+      text-align: center;
+      &__text {
+        color: white;
+      }
+
+      @include respond(phone) {
+        display: none;
+      }
+    }
+
+    .replies-container{
+      display: flex;
+      align-items: center;
+      justify-content: start;
+      flex: 0 0 15%;
+
+      .fa-comment {
+        font-size: 2rem;
+        margin-right: 0.5rem;
+      }
+
+      .number-of-replies {
+        font-size: 2rem;
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+.no-posts {
+  width: 50%;
+  text-align: center;
+  margin: 10rem auto;
+}
+
+.mat-spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

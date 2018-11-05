@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,cAAe;EACb,aAAa,EAAE,CAAC;EAChB,UAAU,EAAE,IAAI;;AAGlB,gBAAiB;EACf,KAAK,EAAE,KAAK;EACZ,MAAM,EAAE,MAAM;EACd,UAAU,EAAE,GAAG;EACf,SAAS,EAAE,gBAAgB;EAC3B,UAAU,EAAE,MAAM",
+"sources": ["error.component.scss"],
+"names": [],
+"file": "error.component.css"
+}

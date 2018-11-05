@@ -1,0 +1,42 @@
+@import "../../../SASS/abstracts/variables";
+
+.chatbox {
+  height: 90vh;
+  position: fixed;
+  width: 100%;
+  top: 10vh;
+  z-index: 4499;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+
+  .top-section {
+    height: 10%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: $color-primary;
+    color: $color-white;
+    font-size: 1.5rem;
+
+    .fa {
+      font-size: 1.5rem;
+    }
+  }
+
+  .window-section {
+    height: 80%;
+    background-color: #eee;
+    padding: 2rem;
+  }
+
+  .input-section {
+    height: 10%;
+
+    input {
+      height: 100%;
+    }
+  }
+}
+
+

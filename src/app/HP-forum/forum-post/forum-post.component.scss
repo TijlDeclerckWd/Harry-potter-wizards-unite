@@ -1,0 +1,206 @@
+@import "../../SASS/abstracts/variables";
+@import "../../SASS/abstracts/mixins";
+
+.main-section {
+  width: 85%;
+  margin: 0 auto;
+  margin-top: 2rem;
+  display: flex;
+  padding: 2rem;
+
+  @include respond(tab-land) {
+    width: 100%;
+  }
+
+  @include respond(tab-port) {
+    flex-direction: column;
+    margin-top: 0;
+  }
+
+  .list-section {
+    width: 80%;
+    margin-right: 5%;
+    padding: 1rem;
+
+
+    @include respond(tab-port) {
+      margin-right: 0;
+      width: 100%;
+    }
+    .post-list {
+      .post {
+        width: 100%;
+        min-height: 15rem;
+        display: flex;
+        border-bottom: 1px solid #aaa;
+
+        @include respond(tab-port) {
+          min-height: 12rem;
+        }
+
+        .profile-pic-container {
+          width: 10%;
+          display: flex;
+          justify-content: flex-start;
+          align-items: flex-start;
+
+          @include respond(tab-port) {
+            width: 15%;
+          }
+
+          .profile-pic {
+            width: 8rem;
+            height: 8rem;
+            border-radius: 50%;
+            box-shadow: 0 1rem 2rem rgba($color-black, .1);
+
+            @include respond(phone) {
+              width: 6rem;
+              height: 6rem;
+            }
+          }
+        }
+
+        .data-container {
+          display: flex;
+          width: 90%;
+          flex-direction: column;
+          padding: 0 2rem;
+
+          .poster {
+            font-weight: 700;
+            margin-bottom: 2rem;
+            cursor: pointer;
+
+            @include respond(tab-port) {
+              margin-bottom: 1rem;
+            }
+            .date-post {
+              font-size: 1rem;
+              margin-left: 0.5rem;
+              font-weight: 500;
+            }
+          }
+
+          .content {
+              font-size: 1.6rem;
+              word-wrap: break-word;
+          }
+        }
+      }
+    }
+
+    .write-reply-container {
+      margin: 2rem auto;
+      width: 80%;
+      padding: 2rem;
+
+      border-radius: 2rem;
+
+      .quote-message {
+        color: green;
+        margin-bottom: .5rem;
+
+        .undo {
+          color: $color-black;
+          margin-left: 1rem;
+          cursor: pointer;
+        }
+      }
+
+      mat-form-field {
+        width: 100%;
+        font-size: 1.6rem;
+      }
+
+      .textarea-login-btn {
+        display: block;
+        margin: 1rem auto;
+        background-color: #444;
+        color: #ffffff;
+        border-radius: 5px;
+        width: 100%;
+        padding: 1rem 2rem;
+      }
+    }
+  }
+
+
+  .options {
+    width: 15%;
+    padding: 1rem;
+
+    @include respond(tab-port) {
+      width: 100%;
+      order: -1;
+    }
+    .sticky-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: all .5s;
+
+      @include respond(tab-land) {
+        position: relative;
+        top: 6rem;
+      }
+
+      @include respond(tab-port) {
+        top: 0;
+        flex-direction: row;
+        justify-content: space-around;
+      }
+      .login-btn, .reply-btn {
+        background-color: #333333;
+        color: $color-white;
+        padding: 1rem;
+        width: 100%;
+        border-radius: 7px;
+        font-weight: 800;
+        margin-bottom: 2rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+
+        @include respond(tab-port) {
+          width: 40%;
+          margin-bottom: 1.5rem;
+          padding: 1rem;
+          font-weight: 600;
+          overflow: hidden;
+        }
+        &:hover{
+          transform: translateY(-.2rem);
+          box-shadow: 0 1rem 2rem rgba($color-black, .4);
+        }
+      }
+    }
+  }
+}
+
+.sticky {
+  position: fixed;
+  right: 10%;
+  top: 7rem;
+  width: 13%;
+
+  @include respond(tab-land) {
+    position: fixed !important;
+    right: 3% !important;
+    top: 27rem !important;
+    width: 16% !important;
+  }
+
+  @include respond(tab-port) {
+    position: relative !important;
+    right:0 !important;
+    top: 0 !important;
+  }
+}
+
+mat-spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+

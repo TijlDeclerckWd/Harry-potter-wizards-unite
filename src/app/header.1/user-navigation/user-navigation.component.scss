@@ -1,0 +1,52 @@
+@import "../../SASS/layout/navigation";
+
+label {
+  .fa-user {
+font-size: 2.5rem;
+    display: inline-block;
+    transition: .2s all;
+
+    @include respond(tab-port) {
+      font-size: 1.75rem;
+    }
+  }
+
+  &:hover .fa-user {
+    transform: scale(1.1);
+  }
+}
+
+.navigation {
+
+  &__list {
+    top: 0;
+    left: 0;
+    background-color: transparent;
+    height: 100vh;
+    transform: translate(0,0);
+    display: flex;
+    align-items: center;
+    transition: all .5s;
+
+    .li-container {
+      margin: 0 auto;
+    }
+  }
+
+  &__window {
+    position: absolute;
+    top: 0;
+    left: 25%;
+    background-color: white;
+    height: 100vh;
+    transition: all .5s;
+
+    @include respond(tab-port) {
+      left: 0;
+      width: 100% !important;
+    }
+  }
+
+
+}
+

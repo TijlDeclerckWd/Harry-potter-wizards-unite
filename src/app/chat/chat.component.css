@@ -1,0 +1,203 @@
+.chat__checkbox {
+  display: none; }
+.chat__button {
+  height: 5rem;
+  width: 5rem;
+  position: fixed;
+  top: 20rem;
+  right: 7rem;
+  border-radius: 50%;
+  z-index: 4500;
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  @media (max-width: 56.25em) {
+    .chat__button {
+      top: 12.6rem;
+      right: 2.7rem;
+      height: 4rem;
+      width: 4rem; } }
+.chat label .fa-envelope, .chat label .fa-close {
+  font-size: 2.5rem;
+  display: inline-block;
+  position: relative;
+  transition: 0.2s all 0.3s; }
+.chat label:hover .fa-envelope {
+  transform: scale(1.1); }
+.chat__side {
+  height: 100vh;
+  width: 20%;
+  position: fixed;
+  right: 0;
+  top: 0;
+  transform: translateX(130rem);
+  background-color: #eee;
+  z-index: 4499;
+  transition: all .3s;
+  border-left: 1px solid #888; }
+  @media (max-width: 56.25em) {
+    .chat__side {
+      width: 100%;
+      height: 90vh;
+      top: 10%;
+      border-left: 1px solid transparent; } }
+  .chat__side .private-conversation-title-container {
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    .chat__side .private-conversation-title-container .private-conversation-title {
+      border-bottom: 1px solid #777777;
+      padding: 1rem;
+      letter-spacing: 1.5px; }
+.chat__checkbox:checked ~ .chat__side {
+  transform: translateX(0); }
+.chat__checkbox:checked + .chat__button {
+  top: 90%;
+  right: 8%;
+  height: 4rem;
+  width: 4rem;
+  border: 1px solid #000; }
+  @media (max-width: 56.25em) {
+    .chat__checkbox:checked + .chat__button {
+      right: 50%; } }
+.chat__bottom {
+  flex-direction: row-reverse;
+  width: 80%;
+  /* height: 4rem; */
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: flex-end;
+  /* background-color: #fff; */
+  z-index: 4499; }
+  @media (max-width: 56.25em) {
+    .chat__bottom {
+      display: none; } }
+.chat__top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 10%;
+  background-color: #fff;
+  display: none;
+  z-index: 4499; }
+  @media (max-width: 56.25em) {
+    .chat__top {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center; } }
+  .chat__top .ss-open-conversations {
+    margin-bottom: 1rem;
+    min-width: 50%;
+    display: flex;
+    justify-content: space-around; }
+    .chat__top .ss-open-conversations .chatbox-phone {
+      height: 50%;
+      border-radius: 2rem;
+      cursor: pointer;
+      word-wrap: break-word; }
+  .chat__top .close-all-conv-btn {
+    background-color: darkred;
+    color: #fff;
+    padding: .5rem;
+    border-radius: 1rem;
+    text-transform: uppercase; }
+
+.chatbox {
+  height: 30rem;
+  width: 25%;
+  border: 1px solid #777;
+  background-color: white;
+  border-radius: 5px 5px 0 0;
+  display: flex;
+  flex-direction: column; }
+  .chatbox__top {
+    flex: 1 0 0;
+    color: white;
+    background-image: linear-gradient(to bottom right, #002F5A, #000027);
+    display: flex;
+    border-radius: 5px 5px 0 0;
+    justify-content: space-between;
+    align-items: center; }
+  .chatbox__name {
+    margin-left: 1rem;
+    cursor: pointer; }
+  .chatbox__minimize, .chatbox__maximize {
+    margin-right: .6rem;
+    cursor: pointer; }
+  .chatbox__close {
+    margin-right: 1rem;
+    cursor: pointer; }
+  .chatbox__window {
+    height: 77%;
+    overflow: auto; }
+  .chatbox__message {
+    width: 50%;
+    word-wrap: break-word;
+    padding: 1rem;
+    border-radius: 20px;
+    margin: .5rem; }
+    .chatbox__message--left {
+      float: left;
+      background-color: #cccccc;
+      color: black; }
+    .chatbox__message--right {
+      float: right;
+      background-color: #002F5A;
+      color: white; }
+  .chatbox__input {
+    height: 13%;
+    margin-top: auto; }
+    .chatbox__input input {
+      height: 100%; }
+
+.conversation {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border: 1px solid transparent;
+  cursor: pointer;
+  height: 5rem;
+  padding: 1rem; }
+  .conversation:hover {
+    background-color: #d6f5f5; }
+  .conversation__profile-pic {
+    height: 3rem;
+    width: 3rem;
+    font-size: 1.3rem;
+    font-weight: 400;
+    border-radius: 50%; }
+  .conversation__name {
+    margin-left: 1.2rem;
+    margin-bottom: 0; }
+  .conversation__right-side-container {
+    margin-left: auto;
+    display: flex;
+    align-items: center; }
+  .conversation__chip {
+    margin-right: 1rem;
+    color: #fff;
+    height: 1rem;
+    border-radius: 50%;
+    padding: 1rem;
+    width: 10%;
+    background-color: #004a8d;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+  .conversation__status {
+    border: 1px solid transparent;
+    background-color: #C70039;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%; }
+    .conversation__status--online {
+      background-color: green !important; }
+
+/*# sourceMappingURL=chat.component.css.map */

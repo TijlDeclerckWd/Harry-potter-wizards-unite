@@ -1,0 +1,50 @@
+@import "../../SASS/abstracts/mixins";
+
+.admin-errors {
+  display: flex;
+
+  .errors-container {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include respond(tab-port) {
+      width: 100%;
+    }
+
+    &--client {
+
+    }
+
+    &--server {
+
+    }
+
+    .error-type {
+      text-transform: uppercase;
+    }
+
+    .error-list {
+      list-style: none;
+      padding: 2rem;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      width: 100%;
+
+      .error {
+        width: 80%;
+        margin-bottom: 2rem;
+        padding: 1rem;
+        border-radius: 1rem;
+        background-color: #fff;
+        border: 1px solid #444444;
+
+        p {
+          word-wrap: break-word;
+        }
+      }
+    }
+  }
+}

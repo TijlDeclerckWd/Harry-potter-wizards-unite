@@ -1,0 +1,36 @@
+<ng-container *ngIf="user; else spinner">
+  <h2 class="last-posts__title">Last forum posts</h2>
+  <ul *ngIf="last3Posts.length !== 0; else noPosts" class="last-posts__list">
+    <li *ngFor="let post of last3Posts" [routerLink]="['/forum/p', post._id]" class="last-posts__list-item">
+      <div class="style-container">
+        <div class="last-posts__date">
+          <h3 class="day">{{getDate('day', post.date)}}</h3>
+          <h4 class="month">{{getDate('month', post.date)}}</h4>
+        </div>
+        <div class="last-posts__post">
+          <h3 class="title">{{post.title | cutTooLongSentencesPipe}}</h3>
+          <h4 class="content">{{post.content | cutTooLongSentencesPipe}}</h4>
+        </div>
+      </div>
+    </li>
+  </ul>
+</ng-container>
+
+
+
+
+<ng-template #noPosts>
+  <div class="no-posts">
+    <h4>This person hasn't posted anything yet</h4>
+  </div>
+
+</ng-template>
+
+<ng-template #spinner>
+  <div class="spinner">
+    <mat-spinner [diameter]="50"></mat-spinner>
+  </div>
+</ng-template>
+
+
+

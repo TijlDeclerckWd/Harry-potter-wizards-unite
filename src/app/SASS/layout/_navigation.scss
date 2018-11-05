@@ -1,0 +1,227 @@
+@import "../abstracts/variables";
+@import "../abstracts/mixins";
+
+
+.navigation {
+  &__checkbox {
+    //  We never want to see this one
+    display: none;
+  }
+
+  &__button {
+    background-color: $color-white;
+    // we make height and width a bit larger than the background to make sure the background
+    // doesn't show
+    height: 7rem;
+    width: 7rem;
+    position: fixed;
+    // so the background is 1 rem smaller so to position it right under
+    // the button we need 0.5rem less.
+    top: 6rem;
+    right: 6rem;
+    border-radius: 50%;
+    z-index: 200;
+    box-shadow: 0 1rem 3rem rgba($color-black, .1);
+    text-align: center;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include respond(tab-port) {
+      height: 5rem;
+      width: 5rem;
+      top: 2rem;
+      right: 2rem;
+    }
+
+    &--smaller {
+      height: 5rem;
+      width: 5rem;
+      top: 14rem;
+      right: 7rem;
+z-index: 400;
+
+      @include respond(tab-port) {
+        height: 4rem;
+        width: 4rem;
+        top: 7.8rem;
+        right: 2.6rem;
+      }
+    }
+  }
+
+  &__background {
+    height: 6rem;
+    width: 6rem;
+    border-radius: 50%;
+    position: fixed;
+    top: 6.5rem;
+    right: 6.5rem;
+    // radial gradient starts in the middle and goes outside from that point
+    background-image: radial-gradient($color-primary-light, $color-primary-dark);
+    //  to avoid that our element gets hidden behind a section
+    z-index: 100;
+    transition: transform .8s cubic-bezier(0.86, 0, 0.07, 1);
+
+    @include respond(tab-port) {
+      height: 4rem;
+      width: 4rem;
+      top: 2.5rem;
+      right: 2.5rem;
+    }
+
+    //transform: scale(80);
+
+    &--smaller {
+      height: 4rem;
+      width: 4rem;
+      z-index: 300;
+      top: 14.5rem;
+      right: 7.5rem;
+
+      @include respond(tab-port) {
+        height: 3.5rem;
+        width: 3.5rem;
+        top: 8rem;
+        right: 3rem;
+      }
+    }
+  }
+
+  &__nav {
+    height: 100vh;
+    //even if we scroll, we want the navigation to stay in the same place
+    position: fixed;
+    top: 0;
+    // We changed this from right to left because the animation looked weird
+    // coming from the other side
+    left: 0;
+    //needs to be above background
+    z-index: 150;
+    // if we had combined the opacity with a normal width, then the links would've been clickable
+    opacity: 0;
+    visibility: hidden;
+    width: 0;
+    //this makes the list move a bit to the right before it moves back to its OG position
+    transition: all .8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    &--smaller {
+      z-index: 350
+    }
+
+  }
+
+  &__list {
+    @include center-horizontal-vertical;
+    list-style: none;
+    text-align: center;
+    //we do this so that the list doesn't move too much during the animation
+    width: 100%;
+
+  }
+
+  &__item {
+    margin: 1rem;
+  }
+
+  &__link {
+    &:link,
+    &:visited {
+      font-size: 3rem;
+      font-weight: 300;
+      padding: 1rem 2rem;
+      color: $color-white;
+      text-decoration: none;
+      text-transform: uppercase;
+      background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-white 50%);
+      // if you make background-size 200% then only the first color will be visible
+      // 100% the color will be half the element and half the other color
+      background-size: 231%;
+      transition: all .4s;
+      //  there was an issue where the padding and the animation didn't work and this
+      //  turned out to be because we didn't specify this anchor element as an inline-block
+      display: inline-block;
+
+      span {
+        margin-right: 1rem;
+        display: inline-block;
+      }
+    }
+
+    &:hover,
+    &:active {
+      background-position: 100%;
+      // not only do we change bgc, we also change the textcolor;
+      color: $color-primary;
+      transform: translateX(1rem);
+    }
+  }
+
+  // FUNCTIONALITY
+
+  &__checkbox:checked ~ &__background {
+    transform: scale(100);
+  }
+
+  &__checkbox:checked ~ &__nav {
+    opacity: 1;
+    visibility: visible;
+    width: 100%;
+  }
+
+  //  ICON
+
+  &__icon {
+    position: relative;
+
+    &,
+    &::before,
+    &::after {
+      width: 3rem;
+      height: 2px;
+      background-color: $color-grey-dark-3;
+      display: inline-block;
+
+      @include respond(tab-port) {
+        width: 2rem;
+        height: 1.5px;
+      }
+    }
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      transition: all .2s;
+    }
+
+    &::before { top: -.8rem;}
+    &::after { top: .8rem;}
+  }
+
+  &__button:hover &__icon::before {
+    top: -1rem;
+  }
+
+  &__button:hover &__icon::after {
+    top: 1rem;
+  }
+
+  // + means adjacent sibling
+  &__checkbox:checked + &__button &__icon {
+    background-color: transparent;
+  }
+
+  &__checkbox:checked + &__button &__icon:before {
+    top: 0;
+    // We give it 180-45 (45 is the half of 90, so ideal for a cross) degrees to have a more special effect
+    transform: rotate(135deg);
+  }
+
+  &__checkbox:checked + &__button &__icon:after {
+    top: 0;
+    transform: rotate(-135deg);
+  }
+}

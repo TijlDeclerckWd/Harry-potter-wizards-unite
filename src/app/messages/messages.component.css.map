@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAEA,gBAAiB;EACf,gBAAgB,ECDE,OAAO;;ADI3B,wBAAyB;EACvB,OAAO,EAAE,EAAE;EACX,2CAAmB;IACjB,UAAU,EAAE,SAAS;;AAIzB,0BAA2B;EACzB,OAAO,EAAE,EAAE;EACX,2CAAgB;IACd,gBAAgB,EAAE,KAAK;IACvB,MAAM,EAAE,KAAK;IACb,kEAAsB;MACpB,OAAO,EAAE,EAAE;MACX,2EAAS;QACP,KAAK,EAAE,GAAG;QACV,aAAa,EAAE,IAAI;QACnB,gBAAgB,EAAE,OAAO;QACzB,OAAO,EAAE,EAAE;QACX,UAAU,EAAE,SAAS",
+"sources": ["messages.component.scss","../SCSS-partials/_variables.scss"],
+"names": [],
+"file": "messages.component.css"
+}

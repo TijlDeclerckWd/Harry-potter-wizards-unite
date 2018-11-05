@@ -1,0 +1,33 @@
+.window {
+  height: 100%;
+  overflow: auto; }
+  .window .date-container {
+    text-align: center;
+    clear: both;
+    color: #4f53a1;
+    width: 60%;
+    border-bottom: 1px solid #4f53a1;
+    padding: 1.5rem 0 0 0;
+    margin: 0 auto 1.5rem auto; }
+    @media (max-width: 56.25em) {
+      .window .date-container {
+        padding: 3rem 0 0 0;
+        margin: 0 auto 3rem auto; } }
+    .window .date-container .date {
+      margin-bottom: .5rem; }
+  .window__message {
+    width: 50%;
+    word-wrap: break-word;
+    padding: 1rem;
+    border-radius: 20px;
+    margin: .5rem; }
+    .window__message--left {
+      float: left;
+      background-color: #cccccc;
+      color: black; }
+    .window__message--right {
+      float: right;
+      background-color: #002F5A;
+      color: white; }
+
+/*# sourceMappingURL=chatbox-window.component.css.map */

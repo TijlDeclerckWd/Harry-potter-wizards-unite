@@ -1,0 +1,17 @@
+.form-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem; }
+  .form-group mat-form-field {
+    display: block;
+    margin-bottom: 1rem;
+    width: 80%; }
+
+.confirm-button {
+  background-color: #002F5A;
+  color: white;
+  padding: 1rem; }
+
+/*# sourceMappingURL=create-post-dialog.component.css.map */

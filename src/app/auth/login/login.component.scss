@@ -1,0 +1,119 @@
+@import "../../SASS/abstracts/variables";
+@import "../../SASS/base/typography";
+
+@import "../../SASS/components/button";
+
+
+
+* {
+  font-size: 1.6rem;
+}
+
+.login-page {
+  padding: 5%;
+  position: relative;
+  height: 100vh;
+
+  .form-container {
+    position: absolute;
+    width: 100%;
+    top: 15%;
+
+    @include respond(tab-port) {
+      top: 20%;
+    }
+
+    .header-box{
+      text-align: center;
+      .heading-secondary {
+        text-align: center;
+        display: inline-block;
+        width: 35%;
+        font-size: 2.2rem;
+        margin-top: 4rem;
+      }
+    }
+
+    .form {
+      &__group {
+        width: 70%;
+        margin: 0 auto;
+        margin-top: 2rem;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+      }
+
+      &__input {
+        font-size: 1.5rem;
+        //By default browsers pick another font family when we use fonts
+        font-family: inherit;
+        // a bit more space on the sides
+        padding: 2.5rem 3rem;
+        //input doesnt inherit font properties
+        color: inherit;
+        border-radius: 2px;
+        background-color: rgba($color-white, .5);
+        border: none;
+        // to avoid movement in the color border when we focus
+        border-bottom: 3px solid transparent;
+        width: 100%;
+        //To give the input (and as a result also the label) its own line
+        display: block;
+        //for when we change the color for valid/invalid inputs
+
+        &:first-child {
+          border-bottom: 1px solid #ccc;
+        }
+
+        &:hover {
+          outline: none;
+        }
+      }
+
+      &__error {
+        color: red;
+        text-align: center;
+        margin-top: 2rem;
+      }
+
+      &__btn {
+        margin: 2rem auto;
+        display: block;
+        width: 70%;
+        padding: 1.4rem 0;
+        background-image: linear-gradient(to bottom right, $color-primary-light, $color-primary);
+        border-radius: .5rem;
+        font-size: 1.8rem;
+        color: $color-white;
+        cursor: pointer;
+      }
+    }
+
+    .spinner-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 10rem;
+    }
+  }
+
+  &__footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: $color-grey-dark-2;
+    text-align: center;
+    padding: 3.5rem 0;
+  }
+
+  &__footer-text {
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+    display: inline-block;
+    margin: 0;
+  }
+}
+
+
+

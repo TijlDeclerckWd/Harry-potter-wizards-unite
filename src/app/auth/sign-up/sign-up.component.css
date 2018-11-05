@@ -1,0 +1,243 @@
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+  margin-bottom: 6rem; }
+  .heading-primary--main {
+    display: block;
+    font-size: 7.5rem;
+    font-weight: 700;
+    letter-spacing: 2.3rem;
+    margin-bottom: 3rem;
+    animation: moveInLeft 2s ease-out;
+    /*fix for glitch that shocks animation*/
+    backface-visibility: hidden; }
+    @media (max-width: 37.5em) {
+      .heading-primary--main {
+        letter-spacing: 1.5rem;
+        font-size: 3.5rem;
+        margin-bottom: 1.5rem; } }
+  .heading-primary--sub {
+    display: block;
+    font-size: 3rem;
+    font-weight: 400;
+    letter-spacing: 1rem;
+    animation: moveInRight 2s ease-out;
+    backface-visibility: hidden;
+    margin-bottom: 1.5rem;
+    color: #fff; }
+    @media (max-width: 37.5em) {
+      .heading-primary--sub {
+        letter-spacing: .75rem;
+        font-size: 2rem;
+        margin-bottom: 1rem; } }
+
+.heading-secondary {
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  display: inline-block;
+  background-image: linear-gradient(to right, #3388B3, #000027);
+  -webkit-background-clip: text;
+  color: transparent;
+  letter-spacing: 2px;
+  transition: all .2s; }
+  @media (max-width: 56.25em) {
+    .heading-secondary {
+      font-size: 3rem; } }
+  @media (max-width: 37.5em) {
+    .heading-secondary {
+      font-size: 2.5rem; } }
+  .heading-secondary:hover {
+    transform: skewY(2deg) skewX(15deg) scale(1.1);
+    text-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.2); }
+
+.heading-tertiary {
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-transform: uppercase; }
+
+.paragraph {
+  font-size: 1.6rem; }
+  .paragraph:not(:last-child) {
+    margin-bottom: 3rem; }
+
+.btn {
+  /*link pseudoclass, special state of selector */
+  /*When we click the button that is called the active state*/
+  /*this transform state is always related to the hover state, not the hover state.*/
+  /*the after pseudo element adds an element right behind the elemetn*/ }
+  .btn:link, .btn:visited {
+    text-decoration: none;
+    text-transform: uppercase;
+    /*first are top and bottom, second are left and right*/
+    padding: 1.5rem 4rem;
+    display: inline-block;
+    border-radius: 10rem;
+    /*this refers to all the animations that will be added to the initial state*/
+    /*the transitions property needs to be on the initial state*/
+    transition: all 0.2s;
+    position: relative;
+    font-size: 1.6rem; }
+  .btn:hover {
+    transform: translateY(-0.3rem);
+    /*1st offset in x direction, 2nd y offset, 3rd blury shadow we want to see*/
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+    /* we want to see the after button when we hover the button*/ }
+    .btn:hover::after {
+      /*what scale does is increase the element*/
+      /*there's scale, scaleX and scaleY*/
+      transform: scaleX(1.5) scaleY(1.4);
+      /*this makes the ::after button go invisible after the 0.4 seconds in the transition*/
+      opacity: 0; }
+  .btn:active {
+    transform: translateY(-0.1rem);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
+  .btn--white {
+    background-color: #fff;
+    color: #777; }
+    .btn--white::after {
+      background-color: #fff; }
+  .btn--grey {
+    background-color: #7C7C7C;
+    color: white; }
+  .btn--primary {
+    background-color: #002F5A;
+    color: white; }
+  .btn::after {
+    /*we always need to specify content and display properties*/
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s; }
+  .btn--animated {
+    animation: moveInBottom 2s ease-out .75s;
+    /*the 0% stats will be applied before the animation starts*/
+    animation-fill-mode: backwards; }
+
+.btn-text:link, .btn-text:visited {
+  font-size: 1.6rem;
+  color: #002F5A;
+  display: inline-block;
+  text-decoration: none;
+  border-bottom: 1px solid #002F5A;
+  padding: 3px;
+  transition: all .2s; }
+.btn-text:hover {
+  background-color: #002F5A;
+  color: #fff;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px); }
+.btn-text:active {
+  box-shadow: 0 0.5rem 1 rem rgba(0, 0, 0, 0.15);
+  transform: translateY(0); }
+
+* {
+  font-size: 2rem; }
+
+.heading-secondary {
+  margin: 0 auto; }
+
+.form-container {
+  background-color: #fff;
+  height: 100vh;
+  padding: 3rem;
+  position: relative; }
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  position: absolute;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  height: 100%; }
+  .form .heading-container {
+    width: 100%;
+    text-align: center; }
+    @media (max-width: 56.25em) {
+      .form .heading-container {
+        flex: 0 0 12%;
+        display: flex;
+        align-items: center; } }
+    .form .heading-container .heading-secondary {
+      margin: 2rem auto;
+      font-size: 3rem; }
+  .form__core {
+    display: flex;
+    flex-wrap: wrap; }
+    @media (max-width: 56.25em) {
+      .form__core {
+        align-content: stretch;
+        flex-grow: 1; } }
+  .form__group {
+    width: 45%; }
+    .form__group:nth-child(odd) {
+      margin-right: 10%; }
+    .form__group .mat-form-field {
+      width: 100%; }
+  @media (max-width: 56.25em) {
+    .form__label {
+      display: none; } }
+  .form .house, .form .country {
+    height: auto; }
+  .form__input {
+    background-color: #fff; }
+  .form__buttons-container {
+    text-align: center; }
+    @media (max-width: 56.25em) {
+      .form__buttons-container {
+        flex: 0 0 13%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center; } }
+    .form__buttons-container .server-error {
+      color: red;
+      text-align: center; }
+    .form__buttons-container .toggle-container {
+      display: none; }
+      @media (max-width: 56.25em) {
+        .form__buttons-container .toggle-container {
+          display: flex;
+          margin: 1rem 0; }
+          .form__buttons-container .toggle-container span {
+            margin: 0 1rem; } }
+    .form__buttons-container .confirm-button {
+      width: 50%; }
+      @media (max-width: 56.25em) {
+        .form__buttons-container .confirm-button {
+          height: 40%; } }
+
+.errors__list {
+  text-align: center;
+  list-style: none;
+  width: 80%;
+  margin: 0 auto; }
+.errors__item {
+  height: 4rem;
+  line-height: 4rem;
+  white-space: nowrap;
+  width: 70%;
+  background-color: #FF6666;
+  color: #fff;
+  border-radius: 3px;
+  margin: 0 auto 1rem auto;
+  font-size: 1.2rem;
+  overflow: auto; }
+
+/deep/ .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
+  background-color: #002F5A; }
+
+/deep/ .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
+  background-color: #002F5A; }
+
+/*# sourceMappingURL=sign-up.component.css.map */

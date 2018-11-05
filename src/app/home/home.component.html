@@ -1,0 +1,27 @@
+<div class="home-page">
+    <div class="jumbotron jumbotron-fluid">
+            <h1 class="heading-primary heading-primary--main"> Wizards unite fans </h1>
+              <div class="navigation-container">
+                <button (click)="scroll(localPlayersHome)" class="find-locals-nav-btn">Find Local players</button>
+                <button routerLink="forum" class="forum-nav-btn">Forum</button>
+                <button *ngIf="!isLoggedIn()" (click)="openLogin()">login / register</button>
+              </div>
+              <div (click)="scroll(localPlayersHome)" class="discover-more-container">
+                <h3 class="discover-more">Discover more</h3>
+                <i class="fa fa-arrow-circle-down"></i>
+              </div>
+    </div>
+</div>
+
+<div #localPlayersHome>
+  <local-players-home *ngIf="isLoggedIn(); else localPlayersOffline"></local-players-home>
+
+  <ng-template #localPlayersOffline>
+    <app-local-players-offline></app-local-players-offline>
+  </ng-template>
+</div>
+
+<div #forumHomepage>
+  <forum-homepage></forum-homepage>
+</div>
+

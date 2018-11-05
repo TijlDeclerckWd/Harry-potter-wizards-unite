@@ -1,0 +1,83 @@
+@import "../../SASS/abstracts/variables";
+@import "../../SASS/abstracts/mixins";
+
+@import "../../SASS/layout/grid";
+
+.img {
+  &__title {
+    font-family: 'Pacifico', sans-serif;
+    color: white;
+    font-size: 4rem;
+    @include center-horizontal-vertical;
+  }
+
+  &__container {
+    height: 30vh;
+    position: relative;
+    background-color: $slytherin-green;
+  }
+
+  &__logo {
+    width: 15%;
+    height: 60%;
+    @include center-horizontal-vertical;
+    left: 10%;
+&--sec {
+  left: 90%
+}
+  }
+
+  &__profile-picture {
+    border-radius: 50%;
+    @include center-horizontal-vertical;
+    top: 125%;
+    height: 85%;
+    width: 21%;
+  }
+
+  .uploadLabel {
+    position: absolute;
+    left: 58%;
+    top: 157%;
+
+    //  original status
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s;
+  }
+
+  .fa-pencil-square-o {
+    font-size: 1.7rem;
+    color: grey;
+    cursor: pointer;
+  }
+
+  &__profile-picture:hover + .uploadLabel {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .uploadLabel:hover {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.content {
+  .col-1-of-2 {
+    text-align: center;
+  }
+  &__category {
+    margin-top: 2rem;
+  }
+
+  &__sub-title {
+    margin-bottom: 1rem;
+    font-size: 1.6rem;
+  }
+
+  &__sub-text {
+    color: $color-grey-dark;
+    font-size: 1.2rem;
+  }
+}

@@ -1,0 +1,13 @@
+.admin-container {
+  display: flex;
+  justify-content: center;
+  padding: 3rem;
+
+  admin-navigation {
+    width: 15%;
+  }
+
+  .admin-window {
+    width: 75%;
+  }
+}

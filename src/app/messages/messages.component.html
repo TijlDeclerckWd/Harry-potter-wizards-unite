@@ -1,0 +1,21 @@
+<div class="row">
+    <div class="col-md-6 conversationListSection">
+        <h3>All Conversations:</h3>
+        <ul>
+            <li (click)="openNewConversation(conversation)" class="list-group-item list-group-item-action conversation-item" *ngFor="let conversation of conversations">
+                <h3>{{conversation?.otherUser}}</h3>
+                <h4>{{conversation?.messages[conversation.messages.length-1].msg | shortenMessage}}</h4>
+            </li>
+        </ul>
+    </div>
+    <div class="col-md-6 singleConversationSection">
+<div class="conversationBox">
+    <div *ngIf="selectedConversation" class="conversationContainer">
+        <div [ngClass]="{'ml-auto': myOwnMessage(message?.from._id), 'grey-background': !myOwnMessage(message?.from._id)}"
+             *ngFor="let message of selectedConversation.messages;" class="message my-1">
+            {{message.msg}}
+        </div>
+    </div>
+</div>
+    </div>
+</div>

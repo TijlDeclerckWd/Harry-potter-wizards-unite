@@ -1,0 +1,103 @@
+.row {
+  max-width: 114rem;
+  margin: 0 auto; }
+  .row:not(:last-child) {
+    margin-bottom: 8rem; }
+    @media (max-width: 56.25em) {
+      .row:not(:last-child) {
+        margin-bottom: 6rem; } }
+  @media (max-width: 56.25em) {
+    .row {
+      max-width: 50rem;
+      padding: 0 3rem; } }
+  .row::after {
+    content: "";
+    display: table;
+    clear: both; }
+  .row [class^="col-"] {
+    float: left; }
+    .row [class^="col-"]:not(:last-child) {
+      margin-right: 4rem; }
+      @media (max-width: 56.25em) {
+        .row [class^="col-"]:not(:last-child) {
+          margin-right: 0;
+          margin-bottom: 6rem; } }
+    @media (max-width: 56.25em) {
+      .row [class^="col-"] {
+        width: 100% !important; } }
+  .row .col-1-of-1 {
+    width: 100%; }
+  .row .col-1-of-2 {
+    width: calc((100% - 4rem) / 2); }
+  .row .col-1-of-3 {
+    width: calc((100% - 2 * 4rem) / 3); }
+  .row .col-2-of-3 {
+    width: calc( 2 * ((100% - 2 * 4rem)  / 3) + 4rem); }
+  .row .col-1-of-4 {
+    width: calc((100% - 3 * 4rem) / 4); }
+  .row .col-2-of-4 {
+    width: calc(2 * ((100% - 3 * 4rem)  / 4) + 4rem); }
+  .row .col-3-of-4 {
+    width: calc(3 * ((100% - 3 * 4rem)  / 4) + 2 * 4rem); }
+
+.img__title {
+  font-family: 'Pacifico', sans-serif;
+  color: white;
+  font-size: 4rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); }
+.img__container {
+  height: 30vh;
+  position: relative;
+  background-color: #1a472a; }
+.img__logo {
+  width: 15%;
+  height: 60%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  left: 10%; }
+  .img__logo--sec {
+    left: 90%; }
+.img__profile-picture {
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  top: 125%;
+  height: 85%;
+  width: 21%; }
+.img .uploadLabel {
+  position: absolute;
+  left: 58%;
+  top: 157%;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s; }
+.img .fa-pencil-square-o {
+  font-size: 1.7rem;
+  color: grey;
+  cursor: pointer; }
+.img__profile-picture:hover + .uploadLabel {
+  opacity: 1;
+  visibility: visible; }
+.img .uploadLabel:hover {
+  opacity: 1;
+  visibility: visible; }
+
+.content .col-1-of-2 {
+  text-align: center; }
+.content__category {
+  margin-top: 2rem; }
+.content__sub-title {
+  margin-bottom: 1rem;
+  font-size: 1.6rem; }
+.content__sub-text {
+  color: #777;
+  font-size: 1.2rem; }
+
+/*# sourceMappingURL=profile-nav.component.css.map */

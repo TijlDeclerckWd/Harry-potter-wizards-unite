@@ -1,0 +1,31 @@
+@import "../SCSS-partials/variables";
+
+.grey-background {
+  background-color: $theme-color-white;
+}
+
+.conversationListSection {
+  padding: 3%;
+  .conversation-item {
+    word-break: break-all;
+  }
+}
+
+.singleConversationSection {
+  padding: 3%;
+  .conversationBox{
+    background-color: white;
+    height: 600px;
+    .conversationContainer{
+      padding: 2%;
+      .message {
+        width: 50%;
+        border-radius: 50px;
+        background-color: #00B7FF;
+        padding: 2%;
+        word-break: break-all;
+      }
+    }
+
+  }
+}

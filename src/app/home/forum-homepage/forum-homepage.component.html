@@ -1,0 +1,27 @@
+<div class="forum">
+  <h2 class=" forum__title heading-secondary">Discover the forum</h2>
+  <div class="forum__card-container">
+    <div class="forum__card" routerLink="['forum/discussions/quests]">
+      <i class="forum__card-icon fa fa-lightbulb-o"></i>
+      <h3 class="heading-tertiary forum__card-header">Tips & Tricks</h3>
+      <p class="forum__card-text">Have a trick you would like to tell others about? Or learn from others to improve your game? Join us!</p>
+    </div>
+    <div class="forum__card" routerLink="forum/discussions/quests">
+      <i class="forum__card-icon fa fa-question-circle"></i>
+      <h3 class="heading-tertiary forum__card-header">Quests</h3>
+      <p class="forum__card-text">Looking for other players to start a quest? Or need some information on a specific quest? Join us!</p>
+    </div>
+    <div class="forum__card" (click)="navigateTo('country')">
+      <i class="forum__card-icon fa fa-compass"></i>
+      <h3 *ngIf="!isLoggedIn()" class="heading-tertiary forum__card-header">Country</h3>
+      <h3 *ngIf="isLoggedIn()" class="heading-tertiary forum__card-header">{{getUser().country}}</h3>
+      <p class="forum__card-text">Discuss the game and strategy with people of your country. Log in and join this community.</p>
+    </div>
+    <div class="forum__card" (click)="navigateTo('house')">
+      <i class="forum__card-icon fa fa-home"></i>
+      <h3 *ngIf="!isLoggedIn()" class="heading-tertiary forum__card-header">House</h3>
+      <h3 *ngIf="isLoggedIn()" class="heading-tertiary forum__card-header">{{getUser().house}}</h3>
+      <p class="forum__card-text">Are you a member of Slytherin? Or do you represent Gryffindor? Log in and discuss the game with members of your house</p>
+    </div>
+  </div>
+</div>

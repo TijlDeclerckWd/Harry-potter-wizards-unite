@@ -1,0 +1,130 @@
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+  margin-bottom: 6rem; }
+  .heading-primary--main {
+    display: block;
+    font-size: 7.5rem;
+    font-weight: 700;
+    letter-spacing: 2.3rem;
+    margin-bottom: 3rem;
+    animation: moveInLeft 2s ease-out;
+    /*fix for glitch that shocks animation*/
+    backface-visibility: hidden; }
+    @media (max-width: 37.5em) {
+      .heading-primary--main {
+        letter-spacing: 1.5rem;
+        font-size: 3.5rem;
+        margin-bottom: 1.5rem; } }
+  .heading-primary--sub {
+    display: block;
+    font-size: 3rem;
+    font-weight: 400;
+    letter-spacing: 1rem;
+    animation: moveInRight 2s ease-out;
+    backface-visibility: hidden;
+    margin-bottom: 1.5rem;
+    color: #fff; }
+    @media (max-width: 37.5em) {
+      .heading-primary--sub {
+        letter-spacing: .75rem;
+        font-size: 2rem;
+        margin-bottom: 1rem; } }
+
+.heading-secondary {
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  display: inline-block;
+  background-image: linear-gradient(to right, #3388B3, #000027);
+  -webkit-background-clip: text;
+  color: transparent;
+  letter-spacing: 2px;
+  transition: all .2s; }
+  @media (max-width: 56.25em) {
+    .heading-secondary {
+      font-size: 3rem; } }
+  @media (max-width: 37.5em) {
+    .heading-secondary {
+      font-size: 2.5rem; } }
+  .heading-secondary:hover {
+    transform: skewY(2deg) skewX(15deg) scale(1.1);
+    text-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.2); }
+
+.heading-tertiary {
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-transform: uppercase; }
+
+.paragraph {
+  font-size: 1.6rem; }
+  .paragraph:not(:last-child) {
+    margin-bottom: 3rem; }
+
+.forum {
+  width: 100%;
+  min-height: 50rem;
+  background-image: linear-gradient(to right, rgba(0, 0, 39, 0.5), rgba(0, 47, 90, 0.5)), url("/assets/images/Hermione_Granger.jpg");
+  background-size: cover;
+  padding-top: 18rem;
+  padding-bottom: 18rem;
+  transform: translateY(-0.5rem);
+  -webkit-clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+  clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%); }
+  @media (max-width: 37.5em) {
+    .forum {
+      -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+      clip-path: polygon(0 5%, 100% 0, 100% 100%, 0 100%);
+      padding-top: 11rem;
+      padding-bottom: 11rem; } }
+  .forum__title {
+    display: block;
+    width: 50%;
+    text-align: center;
+    margin: 0 auto;
+    background-image: linear-gradient(to bottom right, #fff, #ddd);
+    margin-bottom: 5rem; }
+    @media (max-width: 37.5em) {
+      .forum__title {
+        margin-bottom: 3rem; } }
+  .forum__card-container {
+    width: 80%;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch; }
+    @media (max-width: 37.5em) {
+      .forum__card-container {
+        flex-direction: column;
+        align-items: center; } }
+  .forum__card {
+    background-image: linear-gradient(to bottom right, #fff, #ddd);
+    width: 20%;
+    font-size: 1.5rem;
+    padding: 2.5rem;
+    text-align: center;
+    border-radius: 3px;
+    transition: all 0.3s;
+    box-shadow: 0 0.7rem 1.8rem rgba(221, 221, 221, 0.2); }
+    .forum__card:hover {
+      transform: translateY(-1.5rem) scale(1.03); }
+    @media (max-width: 37.5em) {
+      .forum__card {
+        width: 80%;
+        margin-top: 2rem; } }
+  .forum__card-icon {
+    font-size: 6rem;
+    display: inline-block;
+    background-image: linear-gradient(to right, #3388B3, #000027);
+    -webkit-background-clip: text;
+    color: transparent;
+    margin-bottom: 1rem; }
+  .forum__card-header {
+    color: #555555;
+    margin-bottom: 2rem; }
+  .forum__card-text {
+    color: #555555;
+    margin-bottom: 2rem; }
+
+/*# sourceMappingURL=forum-homepage.component.css.map */

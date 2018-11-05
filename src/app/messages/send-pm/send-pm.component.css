@@ -1,0 +1,180 @@
+.form__group:not(:last-child) {
+  margin-bottom: 1.2rem; }
+.form__date-input-label {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-left: 2rem;
+  margin-top: .7rem;
+  display: block;
+  transition: all 0.3s; }
+.form__date-input:not(:enabled) + .form__label {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-4rem); }
+.form__input {
+  font-size: 1.5rem;
+  font-family: inherit;
+  padding: 1.5rem 2rem;
+  color: inherit;
+  border-radius: 2px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: none;
+  border-bottom: 3px solid transparent;
+  width: 90%;
+  display: block;
+  transition: all .3s; }
+  .form__input--right-align {
+    margin-left: auto;
+    margin-right: 0; }
+  .form__input:focus {
+    outline: none;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1); }
+  .form__input::-webkit-input-placeholder {
+    color: #999; }
+.form__label {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-left: 2rem;
+  margin-top: .7rem;
+  display: block;
+  transition: all 0.3s; }
+.form__input:placeholder-shown + .form__label {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-4rem); }
+.form__radio-group {
+  width: 49%;
+  display: inline-block; }
+.form__radio-input {
+  display: none; }
+.form__radio-label {
+  font-size: 1.6rem;
+  cursor: pointer;
+  position: relative;
+  padding-left: 4.5rem; }
+.form__radio-button {
+  height: 3rem;
+  width: 3rem;
+  border: 5px solid #002F5A;
+  border-radius: 50%;
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  top: -.4rem; }
+  .form__radio-button::after {
+    content: "";
+    display: block;
+    height: 1.3rem;
+    width: 1.3rem;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #002F5A;
+    opacity: 0;
+    transition: opacity .2s; }
+.form__radio-input:checked ~ .form__radio-label .form__radio-button::after {
+  opacity: 1; }
+
+.btn {
+  /*link pseudoclass, special state of selector */
+  /*When we click the button that is called the active state*/
+  /*this transform state is always related to the hover state, not the hover state.*/
+  /*the after pseudo element adds an element right behind the elemetn*/ }
+  .btn:link, .btn:visited {
+    text-decoration: none;
+    text-transform: uppercase;
+    /*first are top and bottom, second are left and right*/
+    padding: 1.5rem 4rem;
+    display: inline-block;
+    border-radius: 10rem;
+    /*this refers to all the animations that will be added to the initial state*/
+    /*the transitions property needs to be on the initial state*/
+    transition: all 0.2s;
+    position: relative;
+    font-size: 1.6rem; }
+  .btn:hover {
+    transform: translateY(-0.3rem);
+    /*1st offset in x direction, 2nd y offset, 3rd blury shadow we want to see*/
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+    /* we want to see the after button when we hover the button*/ }
+    .btn:hover::after {
+      /*what scale does is increase the element*/
+      /*there's scale, scaleX and scaleY*/
+      transform: scaleX(1.5) scaleY(1.4);
+      /*this makes the ::after button go invisible after the 0.4 seconds in the transition*/
+      opacity: 0; }
+  .btn:active {
+    transform: translateY(-0.1rem);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
+  .btn--white {
+    background-color: #fff;
+    color: #777; }
+    .btn--white::after {
+      background-color: #fff; }
+  .btn--grey {
+    background-color: #7C7C7C;
+    color: white; }
+  .btn--primary {
+    background-color: #002F5A;
+    color: white; }
+  .btn::after {
+    /*we always need to specify content and display properties*/
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s; }
+  .btn--animated {
+    animation: moveInBottom 2s ease-out .75s;
+    /*the 0% stats will be applied before the animation starts*/
+    animation-fill-mode: backwards; }
+
+.btn-text:link, .btn-text:visited {
+  font-size: 1.6rem;
+  color: #002F5A;
+  display: inline-block;
+  text-decoration: none;
+  border-bottom: 1px solid #002F5A;
+  padding: 3px;
+  transition: all .2s; }
+.btn-text:hover {
+  background-color: #002F5A;
+  color: #fff;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px); }
+.btn-text:active {
+  box-shadow: 0 0.5rem 1 rem rgba(0, 0, 0, 0.15);
+  transform: translateY(0); }
+
+.form .heading-tertiary {
+  background-color: #eee;
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  padding: 1.5rem; }
+.form__group {
+  background-image: linear-gradient(to bottom right, #eee, #ccc);
+  padding: 1.5rem; }
+.form__input {
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 1rem; }
+.form__label {
+  display: block;
+  margin-left: 5rem;
+  margin-bottom: 1.5rem; }
+.form .btn {
+  width: 33%;
+  display: block;
+  margin: 1rem auto;
+  font-size: 2rem;
+  background-image: linear-gradient(to bottom right, #999, #777); }
+
+/*# sourceMappingURL=send-pm.component.css.map */

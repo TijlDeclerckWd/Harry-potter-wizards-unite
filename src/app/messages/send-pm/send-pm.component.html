@@ -1,0 +1,8 @@
+<form class="form" [formGroup]="sendPmForm" (ngSubmit)="sendPM()">
+    <h3 class="heading-tertiary">Send {{ destinationUser?.username }} a message</h3>
+    <div class="form__group">
+        <textarea class="form__input" rows="10" type="text" placeholder="Enter your message" id="message" formControlName="message"></textarea>
+        <label class="form__label" for="message">Message</label>
+        <button class="btn btn--grey" type="submit">Submit</button>
+    </div>
+</form>

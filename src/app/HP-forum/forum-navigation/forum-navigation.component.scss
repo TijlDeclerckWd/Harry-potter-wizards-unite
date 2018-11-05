@@ -1,0 +1,150 @@
+@import "../../SASS/abstracts/variables";
+@import "../../SASS/abstracts/mixins";
+
+.navigation {
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  @include respond(phone) {
+    display: none;
+  }
+
+  &__btn {
+    width: 90%;
+    border-radius: 10px;
+    background-color: $color-primary;
+    color: $color-white;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    transition: .3s all;
+    &:hover {
+      transform: translateY(-0.3rem);
+      box-shadow:0 1rem 2rem rgba($color-black, .2);
+    }
+  }
+
+  &__list {
+    list-style: none;
+    width: 90%;
+  }
+
+  &__list-item {
+    margin-bottom:1rem;
+    font-size: 2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    outline: none;
+
+    &--news {
+      margin-top: 2rem;
+    }
+
+    .colored-box {
+      border-radius: 7px;
+      width: 2rem;
+      height: 2rem;
+      display: inline-block;
+      margin-right: 0.5rem;
+      &--blue {
+        background-color: blue;
+      }
+
+      &--yellow {
+        background-color: yellow;
+      }
+
+      &--green {
+        background-color: green;
+      }
+
+      &--purple {
+        background-color: purple;
+      }
+
+      &--orange {
+        background-color: orange;
+      }
+    }
+  }
+}
+
+.navigation-phone {
+  min-height: 3rem;
+  display: none;
+
+  @include respond(phone) {
+    display: block;
+  }
+
+  &__list {
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap;
+  }
+
+  &__list-item {
+    width: 25%;
+    padding: 1.5rem;
+    background-color: red;
+    color: white;
+    font-weight: bolder;
+    text-align: center;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    outline: none;
+
+    &--special {
+      width: 50%;
+    }
+
+    &--general {
+      background-color: $color-primary;
+    }
+
+    &--news {
+      background-color: darken(orange, 10%);
+    }
+
+    &--quests {
+      background-color: darken(green, 10%);
+    }
+
+    &--country {
+      background-color: darken(yellow, 10%);
+      color: #000;
+      width: 50%;
+    }
+
+    &--tipsntricks {
+      background-color: darken(purple, 10%);
+    }
+  }
+
+  .add-discussion-btn {
+    position: absolute;
+    left: 2%;
+    top: 2%;
+    width: 4rem;
+    height: 4rem;
+    background-color: #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .fa-plus {
+      font-size: 2rem;
+    }
+  }
+}
+

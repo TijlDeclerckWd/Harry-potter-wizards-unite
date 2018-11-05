@@ -1,0 +1,102 @@
+.composition {
+  position: relative; }
+  .composition__photo {
+    width: 55%;
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.4);
+    border-radius: 2px;
+    position: absolute;
+    z-index: 10;
+    transition: all .2s;
+    outline-offset: 1rem; }
+    .composition__photo--p1 {
+      left: 0;
+      top: -2rem; }
+    .composition__photo--p2 {
+      right: 0;
+      top: 2rem; }
+    .composition__photo--p3 {
+      left: 20%;
+      top: 10rem; }
+    .composition__photo:hover {
+      outline: 1rem solid #eee;
+      transform: scale(1.05) translateY(-0.5rem);
+      box-shadow: 0 2.5rem 4rem rgba(0, 0, 0, 0.5);
+      z-index: 20; }
+  .composition:hover .composition__photo:not(:hover) {
+    transform: scale(0.95); }
+
+.slope-div {
+  height: 11rem; }
+  .slope-div--top {
+    background-image: linear-gradient(to right, #002F5A, #000027);
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 100%); }
+  .slope-div--bottom {
+    background-image: linear-gradient(to left, #002F5A, #000027);
+    clip-path: polygon(0 95%, 100% 0, 100% 100%, 0 100%); }
+
+.slope-div--bottom {
+  margin-top: 2rem; }
+
+.locate-players {
+  width: 100%;
+  background-image: linear-gradient(rgba(119, 119, 119, 0.5), rgba(119, 119, 119, 0.5)), url(/assets/images/Harry_Potter_Quidditch_Firebolt.png);
+  background-size: cover;
+  display: flex;
+  justify-content: space-around;
+  margin: -13rem 0;
+  padding: 14rem 0; }
+  @media (max-width: 56.25em) {
+    .locate-players {
+      margin: -15rem 0;
+      padding: 15rem 0; } }
+  .locate-players__text-container {
+    width: 40%;
+    height: 100%;
+    padding: 7rem 2rem;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: space-around; }
+    @media (max-width: 56.25em) {
+      .locate-players__text-container {
+        width: 70%;
+        margin: 0 auto; } }
+  .locate-players__images-container {
+    width: 40%; }
+    @media (max-width: 56.25em) {
+      .locate-players__images-container {
+        display: none; } }
+    .locate-players__images-container .composition {
+      top: 8rem; }
+  .locate-players__header {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #fff;
+    align-self: center;
+    font-size: 4.5rem; }
+  .locate-players__sub-header {
+    color: #fff;
+    font-size: 2rem;
+    margin-top: 3rem; }
+  .locate-players__btn-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 4rem; }
+    .locate-players__btn-container button {
+      width: 40%;
+      background-color: #666;
+      border: 1px solid #fff;
+      color: #fff;
+      font-weight: bolder;
+      letter-spacing: 3px;
+      transition: all .2s;
+      border-radius: 3px;
+      padding: 1rem 2rem;
+      outline: none; }
+      .locate-players__btn-container button:hover {
+        background-color: #8c8c8c;
+        transform: translateY(-3px);
+        cursor: pointer;
+        outline: none; }
+
+/*# sourceMappingURL=local-players-offline.component.css.map */

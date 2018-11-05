@@ -1,0 +1,376 @@
+@import "../SASS/abstracts/variables";
+@import "../SASS/abstracts/mixins";
+
+@import "../SASS/base/animations";
+
+@import "../SASS/components/button";
+@import "../SASS/components/popup";
+
+@import "../SASS/layout/grid";
+
+#map-section {
+  position: relative;
+}
+.cont {
+  height: 100vh;
+  position: relative;
+  .row {
+    max-width: none;
+
+
+    [class^="col-"] {
+      height: 100vh;
+      transition: all .4s;
+
+      &:not(:last-child) {
+        margin-right: 0;
+      }
+
+      .profile-mobile {
+        height: 100vh;
+        width: 100vw;
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 4;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        background-image: linear-gradient(to bottom right, #002F5A, #000027);
+        transition: all 1s;
+
+        &__close-sign {
+          position: absolute;
+          top: 5%;
+          left: 5%;
+          color: $color-black;
+          font-size: 2rem;
+        }
+
+        &__img-container {
+          height: 40%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: lightgray;
+        }
+
+        &__img {
+          height: 26rem;
+          width: 26rem;
+          border-radius: 50%;
+          box-shadow: 0 1rem 2rem rgba($color-black, .5);
+        }
+
+        &__list {
+          list-style: none;
+          text-align: center;
+          margin-top: 2rem;
+        }
+
+        &__list-item {
+          width: 60%;
+          display: block;
+          margin: 0 auto;
+          padding: 2rem 2rem;
+          color: #fff;
+          border-bottom: 2px solid #fff;
+          font-size: 2rem;
+        }
+
+        &__btn-container {
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+          flex: 1 0 0;
+        }
+
+        &__btn {
+          width: 35%;
+          border-radius: 2rem;
+          padding: 1rem 2rem;
+          text-transform: uppercase;
+          font-weight: 700;
+          background-color: lightgray;
+
+          a {
+            text-decoration: none;
+            color: #000;
+          }
+        }
+      }
+
+      .distance {
+        height: 100%;
+        position: absolute;
+        top: 2%;
+        left: 2%;
+        z-index: 3;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+
+
+        &__btn {
+          width: 6rem;
+          height: 6rem;
+          border-radius: 50%;
+
+          text-align: center;
+          font-weight: 800;
+          font-size: 1.2rem;
+          letter-spacing: 1px;
+          box-shadow: 0 1.5rem 3rem rgba($color-black, .4);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+
+          // at first we hide the distances
+          &:not(:first-child) {
+            transform: translateX(-20rem);
+            opacity: 0;
+            margin-top: 1.5rem;
+          }
+
+          &--chosen {
+            background-color: $color-white;
+            color: $color-black;
+          }
+
+          &--1 {
+            background-color: $slytherin-green;
+            color: $color-white;
+            transition: all .5s;
+
+          }
+
+          &--5 {
+            background-color: $gryffindor-red;
+            color: $color-white;
+            transition: all .5s .1s;
+          }
+
+          &--20 {
+            background-color: $ravenclaw-blue;
+            color: $color-white;
+            transition: all .5s .2s;
+          }
+
+          &--50 {
+            background-color: $hufflepuff-yellow;
+            color: $color-white;
+            transition: all .5s .3s;
+          }
+
+          &--100 {
+            background-color: #814488;
+            color: $color-white;
+            transition: all .5s .4s;
+          }
+        }
+      }
+
+      agm-map {
+        height: 100%;
+        transform: translateY(10vh);
+      }
+
+      .profileSection {
+        height: 100%;
+        transition: all 2s;
+        backface-visibility: hidden;
+        color: black;
+
+        &__header {
+          height: 100%;
+          position: relative;
+
+          &--slytherin {
+            background-image: url("/assets/images/slytherin-logo.jpg");
+            background-size: cover;
+            background-position: bottom center;
+          }
+
+          &--gryffindor {
+            background-image: url("/assets/images/gryffindor-logo.jpg");
+            background-size: cover;
+            background-position: top center;
+          }
+
+          &--hufflepuff {
+            background-image: url("/assets/images/hufflepuff-background.png");
+            background-size: cover;
+            background-position: bottom center;
+          }
+
+          &--ravenclaw {
+            background-image: linear-gradient(
+                rgba(0, 0, 0, 0.2),
+                rgba(0, 0, 0, 0.2)
+            ), url("/assets/images/ravenclaw-logo2.jpg");
+            background-size: contain;
+            background-position: center;
+          }
+
+
+        }
+
+        &__img {
+          height: 19rem;
+          width: 19rem;
+          border-radius: 50%;
+          opacity: .2;
+          @include center-horizontal-vertical;
+          transition: all .5s;
+
+          &--start {
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(1.6);
+          }
+
+          &--end {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+          }
+        }
+
+        .header-box {
+          display: block;
+          position: absolute;
+          width: 20%;
+          word-wrap: break-word;
+          text-align: center;
+          transform: translate(-50%, -50%);
+          transition: all 1s;
+
+          &--top {
+            top: 5%;
+            left: 50%;
+            opacity: 1;
+          }
+
+          &--right {
+            top: 50%;
+            left: 90%;
+            opacity: 1;
+          }
+
+          &--bottom {
+            top: 95%;
+            left: 50%;
+            opacity: 1;
+          }
+
+          &--left {
+            top: 50%;
+            left: 10%;
+            opacity: 1;
+          }
+        }
+
+        &__data {
+          color: $color-white;
+          background-color: transparent;
+        }
+
+        &__btn {
+          position: absolute;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 15%;
+          border-radius: 2rem;
+          padding: .5rem 1rem;
+          transition: all .3s;
+          background-color: #ddd;
+
+          &:hover {
+            background-color: $color-white;
+          }
+
+          .fa-user, .fa-envelope {
+            font-size: 2.5rem;
+          }
+
+          &--first {
+            top: 25%;
+            left: 50%;
+            opacity: 1;
+          }
+
+          &--sec {
+            top: 75%;
+            left: 50%;
+            opacity: 1;
+          }
+        }
+      }
+    }
+
+    .col-1-of-2 {
+      &:not(:last-child) {
+        margin-right: $gutter-horizontal-small !important;
+      }
+    }
+  }
+
+
+
+    mat-spinner {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+}
+
+
+
+
+//utility classes
+
+.not-visible {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(50rem);
+}
+
+.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+// when we click the pick-distance button, we show the possible distances to choose from
+.show-distances {
+  transform: translateX(0) !important;
+  opacity: 1 !important;
+}
+
+
+// right, bottom and left start invisible, while the top box is visible and larger
+// The width is important for aesthetics.
+.start-pos {
+  top: 50%;
+  left: 50%;
+  opacity: 0;
+
+  &--top {
+    top: 50%;
+    left: 50%;
+    opacity: 1;
+    width: 40% !important;
+
+    h3 {
+      font-size: 2.5rem;
+      display: block;
+      margin: 2rem auto;
+    }
+  }
+}
+
+.row {
+  padding: 0 !important;
+}
+
+

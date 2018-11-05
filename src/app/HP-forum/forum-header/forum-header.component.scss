@@ -1,0 +1,60 @@
+@import "../../SASS/abstracts/variables";
+@import "../../SASS/abstracts/mixins";
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5rem;
+  min-height: 10rem;
+
+  &__container {
+    max-width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  &__title {
+    font-size: 3rem;
+
+    @include respond(phone) {
+      font-size: 2.5rem;
+    }
+  }
+
+  &__description {
+    font-size: 1.5rem;
+
+    @include respond(phone) {
+      display: none;
+    }
+  }
+
+  &__category {
+    padding: .5rem 2rem;
+    background-color: white;
+    color: darkblue;
+    border-radius: 5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: .5rem;
+  }
+}
+
+
+
+// utilities
+
+.grey-background {
+  background-image: linear-gradient(to bottom right, $color-secondary-light, $color-secondary-dark);
+  color: $color-white;
+}
+
+.blue-background {
+  background-image: linear-gradient(to bottom, $color-primary-light, $color-primary-dark);
+  color: $color-white;
+}

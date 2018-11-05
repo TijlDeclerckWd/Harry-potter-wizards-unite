@@ -1,0 +1,64 @@
+<div class="chat">
+  <input [checked]="checkboxChecked" type="checkbox" class="chat__checkbox">
+  <label [matBadgeHidden]="totalNewMessages < 1 || checkboxChecked" [matBadge]="totalNewMessages" matBadgeColor="warn" *ngIf="isLoggedIn() && !displayedConversation" (click)="changeCheckboxStatus()" class="chat__button">
+    <span>
+      <i *ngIf="!checkboxChecked" class="fa fa-envelope fa-3"></i>
+      <i (click)="closeChat()" *ngIf="checkboxChecked" class="fa fa-close fa-3"></i>
+    </span>
+  </label>
+
+  <div [ngStyle]="{
+  'height.vh': heightMainChat(),
+  'top.%': topMainChat()
+  }" class="chat__side">
+    <div class="private-conversation-title-container">
+      <span class="private-conversation-title">Private conversations</span>
+    </div>
+    <div (click)="openConversation(conversation)" *ngFor="let conversation of conversations; trackBy: trackById" class="conversation">
+      <img *ngIf="!conversation.otherUser.profilePicture.uploaded" class="conversation__profile-pic" src="assets/images/blank-profile-picture.png" alt="jos">
+      <img *ngIf="conversation.otherUser.profilePicture.uploaded" class="conversation__profile-pic" [src]="'assets/images/profile-pictures/' + conversation.otherUser.profilePicture.name" alt="jos">
+      <p class="conversation__name">{{conversation.otherUser.username}}</p>
+      <div class="conversation__right-side-container">
+        <div *ngIf="displayUnseenMessages(conversation)" class="conversation__chip">{{conversation.newMessages.count}}</div>
+        <div [ngClass]="{'conversation__status--online': isUserOnline(conversation.otherUser._id, conversation.otherUser.username)}" class="conversation__status"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="chat__bottom">
+    <div [ngStyle]="{'height.rem': boxStyle('chatbox', openConversation._id)}" *ngFor="let openConversation of openConversations" class="chatbox">
+     <div [ngStyle]="{'height.%': boxStyle('header', openConversation._id)}" class="chatbox__top">
+       <span [routerLink]="['profile', openConversation.otherUser.userId]" class="chatbox__name">{{openConversation.otherUser.username}}</span>
+       <div>
+         <span *ngIf="!isBoxMinimized(openConversation._id)" (click)="minimizeBox('minimize', openConversation._id)" class="chatbox__minimize">&minus;</span>
+         <span *ngIf="isBoxMinimized(openConversation._id)" (click)="minimizeBox('maximize', openConversation._id)" class="chatbox__maximize fa fa-plus"></span>
+         <span (click)="closeBox(openConversation)" class="chatbox__close"> &#10006;</span>
+       </div>
+     </div>
+      <div [ngStyle]="{'display': boxStyle('window', openConversation._id)}" class="chatbox__window">
+        <chatbox-window #chatWindow [conversation]="openConversation"></chatbox-window>
+      </div>
+      <div [ngStyle]="{'display': boxStyle('input', openConversation._id)}" class="chatbox__input">
+        <input (keyup.enter)="sendMessage(openConversation.otherUser.userId, openConversation._id)" [(ngModel)]="msg" class="form-control" type="text" placeholder="Type Message...">
+      </div>
+    </div>
+  </div>
+
+  <div [ngStyle]="{
+  'display': displayChatTopSS()
+  }" class="chat__top">
+    <div class="ss-open-conversations">
+      <button (click)="displayConversationSS(conversation)" *ngFor="let conversation of openConversations" class="chatbox-phone btn">{{conversation.otherUser.username}}</button>
+    </div>
+    <button class="close-all-conv-btn" (click)="closeChat()">Close all conversations</button>
+  </div>
+</div>
+
+<ss-chatbox
+  *ngIf="displayChatboxSS()"
+  [displayedConversation]="displayedConversation"
+  (closeDisplayedConv)="closeDisplayedConv($event)"
+  (minimizeDisplayedConv)="minimizeDisplayedConv($event)"
+></ss-chatbox>
+
+

@@ -1,0 +1,66 @@
+<ng-container *ngIf="user; else spinner">
+  <div class="header header__container" [style.background-color]="determineBGC(user.house)" >
+    <img class="header__logo" src="assets/images/{{user.house}}-logo.png" alt="logo">
+    <div class="header__title-container">
+      <i *ngIf="!isItMyProfile()" (click)="openModal(content)" class="fa fa-envelope"></i>
+      <h2 class="header__title">{{user.username}}</h2>
+    </div>
+    <img class="header__logo header__logo--sec" src="/assets/images/{{user.house}}-logo.png" alt="logo">
+  </div>
+
+  <div class="content">
+
+    <img *ngIf="user && user.profilePicture.uploaded"  class="img__profile-picture" [src]="'/assets/images/profile-pictures/' + user?.profilePicture.name" alt="profile-pic">
+    <img *ngIf="user && !user.profilePicture.uploaded"  class="img__profile-picture" src="/assets/images/blank-profile-picture.png" alt="profile-pic">
+
+    <label *ngIf="isItMyProfile()" for="uploadProfilePic" class="uploadLabel">
+      <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+    </label>
+    <input type="file" id="uploadProfilePic" style="display: none" (change)="uploadProfilePic($event.target.files)">
+
+    <div class="column-1">
+      <div class="content__category">
+        <h5 class="content__sub-title">House</h5>
+        <h6 class="content__sub-text">{{user?.house}}</h6>
+      </div>
+      <div class="content__category">
+        <h5 class="content__sub-title">Location</h5>
+        <h6 class="content__sub-text">Brussels, Belgium</h6>
+      </div>
+    </div>
+    <div class="column-2">
+      <div class="content__category">
+        <h5 class="content__sub-title">Age</h5>
+        <h6 class="content__sub-text">28</h6>
+      </div>
+      <div class="content__category">
+        <h5 class="content__sub-title">House</h5>
+        <h6 class="content__sub-text">Slytherin</h6>
+      </div>
+    </div>
+  </div>
+
+  <div class="forum">
+    <div class="forum__last-posts-container">
+      <last-forum-posts [user]="user"></last-forum-posts>
+    </div>
+    <div class="forum__last-replies-container">
+      <last-forum-replies [userId]="user?._id"></last-forum-replies>
+    </div>
+  </div>
+</ng-container>
+
+<ng-template #spinner>
+  <div class="spinner">
+    <mat-spinner></mat-spinner>
+  </div>
+</ng-template>
+
+<!-- ##### POPUP ##### -->
+
+<ng-template #content let-modal>
+  <send-pm [destinationUser]="user" (closeModal)="closeModal(content)"></send-pm>
+</ng-template>
+
+
+

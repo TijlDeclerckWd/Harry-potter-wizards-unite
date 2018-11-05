@@ -1,0 +1,11 @@
+<div [ngClass]="{
+    'grey-background': main,
+    'blue-background': post
+}"
+     class="header">
+  <div class="header__container">
+    <h3 *ngIf="title" class="header__title">{{title}} </h3>
+    <h5 *ngIf="description" class="header__description">{{description}}</h5>
+    <div *ngIf="category" class="header__category">{{category}}</div>
+  </div>
+</div>

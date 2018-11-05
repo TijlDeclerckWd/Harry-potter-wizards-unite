@@ -1,0 +1,18 @@
+<div #window class="window">
+  <ng-container #messageContainer *ngFor="let message of conversation.messages">
+    <div class="date-container" *ngIf="!message.msg; else windowMsg">
+      <p class="date">{{message.date | amDateFormat:'LL'}}</p>
+    </div>
+    <ng-template #windowMsg>
+      <p
+        class="window__message"
+        [ngClass]="{
+    'window__message--left': isItMyMsg(message),
+    'window__message--right': !isItMyMsg(message)
+    }"
+      >
+        {{message.msg}}
+      </p>
+    </ng-template>
+  </ng-container>
+</div>

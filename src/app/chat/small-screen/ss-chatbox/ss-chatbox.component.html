@@ -1,0 +1,14 @@
+<div class="chatbox">
+  <div class="top-section">
+    <i (click)="minimizeDisplayedConv.emit(displayedConversation)" class="fa fa-minus"></i>
+<p>{{displayedConversation.otherUser.username}}</p>
+<i (click)="closeDisplayedConv.emit(displayedConversation)" class="fa fa-close"></i>
+
+  </div>
+  <div class="window-section">
+      <chatbox-window [conversation]="displayedConversation"></chatbox-window>
+  </div>
+  <div class="input-section">
+    <input type="text" class="form-control form-control-lg" placeholder="Type a message...">
+  </div>
+</div>

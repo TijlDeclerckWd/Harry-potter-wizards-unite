@@ -1,0 +1,36 @@
+<li class="reply" *ngIf="reply">
+  <div class="profile-pic-container">
+    <img *ngIf="reply.user.profilePicture.uploaded" class="profile-pic" [src]="'/assets/images/profile-pictures/' + reply.user.profilePicture.name" alt="profile-pic">
+  </div>
+  <div class="data-container">
+    <h4 [routerLink]="['/profile', reply.user._id]" class="poster">{{ reply.user.username }} <span class="date-post">{{ reply.date | amTimeAgo}}</span></h4>
+    <div class="content">
+      <ng-container *ngIf="reply.quote.selected">
+        <span class="quoted-reply-username">Quoted {{reply.quote.obj.username}}</span>
+        <div class="quoted-reply-container">
+          <p class="quoted-reply">{{reply.quote.obj.content}}</p>
+        </div>
+      </ng-container>
+      <p class="content-text">{{ reply.content }}</p>
+    </div>
+  </div>
+  <i *ngIf="isItMyReply(reply?.user._id)" ngbTooltip="Delete this comment" (click)="deleteReply(reply?._id)" class="fa fa-trash" aria-hidden="true"></i>
+  <i *ngIf="isItMyReply(reply?.user._id)" ngbTooltip="Edit this comment" (click)="openEditModal(content)" class="fa fa-pencil-square-o"></i>
+  <i (click)="quoteReply()" ngbTooltip="Reply to this comment" class="fa fa-quote-left"></i>
+</li>
+
+
+<!-- #### MODAL #### -->
+
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Edit Your Previous Reply</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <textarea [(ngModel)]="editContent" name="editReply" class="form-control" id="editContent" cols="30" rows="10"></textarea>
+    <button (click)="editReply()" class="btn btn-outline-dark btn-block edit-reply-btn">Save Edit</button>
+  </div>
+</ng-template>

@@ -1,0 +1,175 @@
+@import "../../SASS/abstracts/variables";
+@import "../../SASS/abstracts/mixins";
+
+@import "../../SASS/base/utilities";
+@import "../../SASS/base/typography";
+
+@import "../../SASS/components/card";
+@import "../../SASS/components/slope-div";
+@import "../../SASS/components/button";
+@import "../../SASS/components/popup";
+
+@import "../../SASS/layout/grid";
+
+
+
+.heading-container {
+  margin-bottom: 4rem;
+
+  .heading-secondary {
+
+  }
+
+  .heading-4 {
+    margin-top: 1rem;
+  }
+}
+
+.row {
+  margin-bottom: 4rem !important;
+
+  .error-message-container {
+
+    border-radius: 1rem;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 10rem;
+    padding: 2rem;
+    .error-message {
+      font-size: 2rem;
+      white-space: pre-line;
+      line-height: 5rem;
+    }
+
+    .error-btn {
+      background-color: #bbbbbb;
+      color: $color-black;
+      border-radius: 1rem;
+      padding: 1rem;
+      width: 30%;
+      text-transform: uppercase;
+      transition: .5s all;
+      cursor: pointer;
+
+      &:hover {
+        background-color: darken(#bbbbbb, 10%);
+        color: $color-white;
+        transform: translateY(-.3rem);
+        box-shadow: 0 1rem 2rem rgba($color-black, .2);
+      }
+    }
+  }
+}
+
+
+
+.card {
+  text-align: center;
+  background-color: #eee;
+  border: none;
+  height: 35rem;
+  &__side {
+    padding: 3%;
+    height: 35rem;
+  }
+
+  &__img {
+    height: 25rem;
+  }
+
+  &__text {
+    font-size: 2.5rem;
+    color: $color-white-dark;
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 1rem;
+  }
+
+  .info {
+    &__list {
+      width: 80%;
+      margin: 0 auto;
+      list-style: none;
+    }
+
+    &__list-item {
+      border-bottom: 1px solid $color-white;
+      padding: 1rem;
+      font-size: 1.8rem;
+
+      &:last-child {
+        margin-bottom: 1.5rem;
+      }
+    }
+  }
+}
+
+.btn {
+  width:60%;
+  padding: 1.5rem;
+  margin: 0 auto;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: white;
+  background-image: linear-gradient(to right, $color-secondary, $color-secondary-dark);
+  transition: all .5s;
+  cursor: pointer;
+
+  &--animated {
+    padding: 1rem 0;
+  }
+
+  &--dark-grey {
+    margin-bottom: 4rem;
+  }
+
+  &:hover {
+transform: scaleX(1.2);
+}
+
+  @include respond(tab-port) {
+    width: 60%;
+  }
+}
+
+.spinner-container {
+  margin-top: 3rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  mat-spinner {
+    margin: 0 auto;
+  }
+}
+
+.popup {
+  &__content {
+    width: 50%;
+  }
+}
+
+
+//////////////////////////////////////////
+// Backgrounds cards
+
+.bgc-slytherin {
+  background-image: linear-gradient(to bottom right, lighten($slytherin-green, 20%), $slytherin-green ) !important;
+}
+
+
+.bgc-gryffindor {
+  background-image: linear-gradient(to bottom right, lighten($gryffindor-red, 20%), $gryffindor-red ) !important;
+}
+
+.bgc-ravenclaw {
+  background-image: linear-gradient(to bottom right, lighten($ravenclaw-blue, 20%), $ravenclaw-blue) !important;
+}
+
+.bgc-hufflepuff {
+  background-image: linear-gradient(to bottom right, lighten($hufflepuff-yellow, 20%), $hufflepuff-yellow) !important;
+}

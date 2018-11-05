@@ -1,0 +1,171 @@
+@import "../../SASS/abstracts/variables";
+@import "../../SASS/abstracts/mixins";
+
+@import "../../SASS/base/_typography.scss";
+
+
+@import "../../SASS/components/button";
+
+
+
+
+* {
+  font-size: 2rem;
+}
+//
+//input.ng-valid.ng-dirty, input.ng-valid.ng-touched {
+//  border-bottom: 3px solid green;
+//}
+//
+//input.ng-invalid.ng-dirty, input.ng-invalid.ng-touched {
+//  border-bottom: 3px solid red;
+//}
+
+.heading-secondary {
+  margin: 0 auto;
+}
+
+// FORM
+
+.form-container {
+  background-color: $color-white;
+  height: 100vh;
+  padding: 3rem;
+  position: relative;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  position: absolute;
+  @include center-horizontal-vertical;
+  width: 90%;
+  height: 100%;
+
+  .heading-container {
+    width: 100%;
+    text-align: center;
+
+    @include respond(tab-port){
+      flex: 0 0 12%;
+      display: flex;
+      align-items: center;
+    }
+
+    .heading-secondary {
+      margin: 2rem auto;
+      font-size: 3rem;
+    }
+  }
+
+  &__core {
+    display: flex;
+    flex-wrap: wrap;
+
+    @include respond(tab-port) {
+      align-content: stretch;
+      flex-grow: 1;
+    }
+  }
+
+  &__group {
+    width: 45%;
+
+    &:nth-child(odd){
+      margin-right: 10%;
+    }
+
+    .mat-form-field {
+      width: 100%;
+    }
+  }
+
+  &__label {
+    @include respond(tab-port) {
+      display: none;
+    }
+  }
+
+  .house, .country {
+    height: auto;
+  }
+
+  &__input {
+    background-color: $color-white;
+  }
+
+  &__buttons-container {
+    text-align: center;
+
+    @include respond(tab-port) {
+      flex: 0 0 13%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .server-error{
+      color: red;
+      text-align: center;
+    }
+
+    .toggle-container {
+      display: none;
+
+      @include respond(tab-port){
+        display: flex;
+        margin: 1rem 0;
+
+        span {
+          margin: 0 1rem;
+        }
+      }
+    }
+
+    .confirm-button{
+      width: 50%;
+
+      @include respond(tab-port) {
+        height: 40%;
+      }
+    }
+  }
+}
+
+.errors {
+  &__list {
+    text-align: center;
+    list-style: none;
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  &__item {
+    height: 4rem;
+    line-height: 4rem;
+    white-space: nowrap;
+    width: 70%;
+    background-color: #FF6666;
+    color: $color-white;
+    border-radius: 3px;
+    margin: 0 auto 1rem auto;
+    font-size: 1.2rem;
+    overflow: auto;
+    //
+    //&:nth-child(even){
+    //  margin-right: 0;
+    //}
+  }
+}
+
+
+// style slide
+
+/deep/ .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
+  background-color: $color-primary;
+}
+/deep/ .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
+  background-color: $color-primary;
+}

@@ -1,0 +1,69 @@
+.last-posts__title {
+  width: 70%;
+  margin: 0 auto;
+  padding-bottom: .5rem;
+  border-bottom: 1px solid #444;
+  text-transform: uppercase;
+  text-align: center;
+  color: #444;
+  font-size: 1.7rem; }
+.last-posts__list {
+  list-style: none;
+  margin-top: 3rem; }
+.last-posts__list-item {
+  display: flex;
+  cursor: pointer;
+  padding: 1rem;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid #ccc; }
+  .last-posts__list-item:hover .style-container {
+    border-left: 5px solid #3388B3; }
+  .last-posts__list-item:hover .day {
+    color: #444; }
+  .last-posts__list-item:hover .month {
+    color: #777; }
+  .last-posts__list-item:hover .last-posts__post {
+    color: #3388B3; }
+  .last-posts__list-item .style-container {
+    border-left: 5px solid #ccc;
+    height: 90%;
+    width: 100%;
+    display: flex; }
+.last-posts__date {
+  flex: 0 0 20%;
+  padding: .5rem;
+  text-align: center; }
+  .last-posts__date .day {
+    font-weight: 700;
+    font-size: 2.8rem;
+    margin-bottom: 0;
+    color: #666; }
+  .last-posts__date .month {
+    font-weight: 700;
+    font-size: 2.3rem;
+    color: #aaa;
+    margin-bottom: 0; }
+.last-posts__post {
+  flex: 1 0 0;
+  padding: .5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around; }
+  .last-posts__post .title {
+    margin-bottom: 0.5rem; }
+  .last-posts__post .content {
+    color: #aaaaaa; }
+
+.no-posts, .spinner {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center; }
+
+.no-posts h4 {
+  width: 70%;
+  text-align: center; }
+
+/*# sourceMappingURL=last-forum-posts.component.css.map */

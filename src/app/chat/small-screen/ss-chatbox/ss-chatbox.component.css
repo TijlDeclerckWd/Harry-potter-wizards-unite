@@ -1,0 +1,29 @@
+.chatbox {
+  height: 90vh;
+  position: fixed;
+  width: 100%;
+  top: 10vh;
+  z-index: 4499;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column; }
+  .chatbox .top-section {
+    height: 10%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #002F5A;
+    color: #fff;
+    font-size: 1.5rem; }
+    .chatbox .top-section .fa {
+      font-size: 1.5rem; }
+  .chatbox .window-section {
+    height: 80%;
+    background-color: #eee;
+    padding: 2rem; }
+  .chatbox .input-section {
+    height: 10%; }
+    .chatbox .input-section input {
+      height: 100%; }
+
+/*# sourceMappingURL=ss-chatbox.component.css.map */

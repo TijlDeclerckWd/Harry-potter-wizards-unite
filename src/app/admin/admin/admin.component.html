@@ -1,0 +1,7 @@
+<div class="admin-container">
+  <admin-navigation (changeDisplayedComponent)="changeDisplayedComponent($event)"></admin-navigation>
+  <div class="admin-window">
+    <create-forum-section *ngIf="displayedComponent === 'create-forum-section'"></create-forum-section>
+    <admin-errors *ngIf="displayedComponent === 'admin-errors'"></admin-errors>
+  </div>
+</div>

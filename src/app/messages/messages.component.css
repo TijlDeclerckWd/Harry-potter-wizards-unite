@@ -1,0 +1,23 @@
+.grey-background {
+  background-color: #EEE5E9; }
+
+.conversationListSection {
+  padding: 3%; }
+  .conversationListSection .conversation-item {
+    word-break: break-all; }
+
+.singleConversationSection {
+  padding: 3%; }
+  .singleConversationSection .conversationBox {
+    background-color: white;
+    height: 600px; }
+    .singleConversationSection .conversationBox .conversationContainer {
+      padding: 2%; }
+      .singleConversationSection .conversationBox .conversationContainer .message {
+        width: 50%;
+        border-radius: 50px;
+        background-color: #00B7FF;
+        padding: 2%;
+        word-break: break-all; }
+
+/*# sourceMappingURL=messages.component.css.map */

@@ -1,0 +1,42 @@
+@import "../../SASS/abstracts/variables";
+
+@import "../../SASS/components/form";
+@import "../../SASS/components/button";
+
+
+.form {
+
+  .heading-tertiary {
+    background-color: #eee;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    padding: 1.5rem;
+  }
+
+  &__group {
+    background-image: linear-gradient(to bottom right, #eee, #ccc);
+    padding: 1.5rem;
+  }
+
+  &__input {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+  }
+
+  &__label {
+    display: block;
+    margin-left: 5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .btn {
+    width: 33%;
+    display: block;
+    margin: 1rem auto;
+    font-size: 2rem;
+    background-image: linear-gradient(to bottom right, $color-grey-dark-2, $color-grey-dark);
+  }
+}
+

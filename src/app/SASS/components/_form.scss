@@ -1,0 +1,149 @@
+@import "../abstracts/variables";
+
+.form {
+  &__group:not(:last-child) {
+    margin-bottom: 1.2rem;
+  }
+
+  &__date-input {
+
+  }
+
+  &__date-input-label {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-left: 2rem;
+    margin-top: .7rem;
+    //otherwise you can't use the margin properties on this element
+    display: block;
+    transition: all 0.3s;
+  }
+
+  &__date-input:not(:enabled) + &__label {
+    opacity: 0;
+    // we use hidden to hide the element, why do we use opcity too then? because we can't animate visibility
+    visibility: hidden;
+    transform: translateY(-4rem);
+  }
+
+  &__input {
+    font-size: 1.5rem;
+    //By default browsers pick another font family when we use fonts
+    font-family: inherit;
+    // a bit more space on the sides
+
+    padding: 1.5rem 2rem;
+    //input doesnt inherit font properties
+    color: inherit;
+    border-radius: 2px;
+    background-color: rgba($color-white, .5);
+    border: none;
+    // to avoid movement in the color border when we focus
+    border-bottom: 3px solid transparent;
+    width: 90%;
+    //To give the input (and as a result also the label) its own line
+    display: block;
+    //for when we change the color for valid/invalid inputs
+    transition: all .3s;
+
+    &--right-align {
+      margin-left: auto;
+      margin-right: 0;
+    }
+
+    &:focus {
+      // We don't want the border the browser gives us by default, so we set it to none.
+      outline: none;
+      box-shadow: 0 1rem 2rem rgba($color-black, .1);
+    }
+    //  // basic value
+    //  border-bottom: 3px solid green;
+    //}
+    //
+    //&:focus:valid {
+    //  // this one is more specific than the basic soooo it gets applied when status changes
+    //  border-bottom: 3px solid green;
+    //}
+
+    //&:focus:invalid {
+    //  //  invalid pseudo-class, we use these when the value is valid or invalid
+    //  //   here it's an   invalid focused input element
+    //  border-bottom: 3px solid red;
+    //}
+
+    &::-webkit-input-placeholder {
+      color: $color-grey-dark-2;
+    }
+  }
+
+  &__label {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-left: 2rem;
+    margin-top: .7rem;
+    //otherwise you can't use the margin properties on this element
+    display: block;
+    transition: all 0.3s;
+  }
+
+  // the + here signals a sibling
+  &__input:placeholder-shown + &__label {
+    opacity: 0;
+    // we use hidden to hide the element, why do we use opcity too then? because we can't animate visibility
+    visibility: hidden;
+    transform: translateY(-4rem);
+  }
+
+  &__radio-group {
+    width: 49%;
+    //this way we can use margin and padding / width without line-breaking
+    display: inline-block;
+  }
+
+  &__radio-input {
+    display: none;
+  }
+
+  &__radio-label {
+    font-size: 1.6rem;
+    cursor: pointer;
+    position: relative;
+    padding-left: 4.5rem;
+  }
+
+  &__radio-button {
+    height: 3rem;
+    width: 3rem;
+    border: 5px solid $color-primary;
+    border-radius: 50%;
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    top: -.4rem;
+
+
+    &::after {
+      // we want this circle to be centered inside the outer circle
+      content: "";
+      display: block;
+      height: 1.3rem;
+      width:1.3rem;
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: $color-primary;
+      //inner circles should not be visible when not selected
+      opacity: 0;
+      transition: opacity .2s;
+    }
+  }
+
+  // remember to put checked on the OG input element, not on the one we created
+  // we use the sibling selector to select the label and then the child
+  // ~ means all the siblings
+  &__radio-input:checked ~ &__radio-label &__radio-button::after {
+    opacity: 1;
+  }
+}

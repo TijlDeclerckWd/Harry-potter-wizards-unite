@@ -1,0 +1,10 @@
+.admin-container {
+  display: flex;
+  justify-content: center;
+  padding: 3rem; }
+  .admin-container admin-navigation {
+    width: 15%; }
+  .admin-container .admin-window {
+    width: 75%; }
+
+/*# sourceMappingURL=admin.component.css.map */

@@ -1,0 +1,207 @@
+@import "../../SASS/abstracts/variables";
+@import "../../SASS/abstracts/mixins";
+
+@import "../../SASS/layout/grid";
+
+.header {
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  @include respond('phone') {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__title-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    @include respond(phone) {
+      flex-direction: row;
+    }
+
+    .fa-envelope {
+      color: #fff;
+      cursor: pointer;
+      font-size: 3rem;
+      transition: .3s all;
+
+      @include respond(phone) {
+        font-size: 1.5rem;
+      }
+      &:hover {
+        font-size: 3.3rem;
+      }
+    }
+  }
+
+  &__title {
+    font-family: 'Pacifico', sans-serif;
+    color: white;
+    font-size: 4rem;
+    margin-top: 1rem;
+
+    @include respond(phone) {
+      order: -1;
+      margin-bottom: 0;
+      margin-top: 0;
+      margin-right: 1rem;
+    }
+  }
+
+  &__container {
+    height: 25vh;
+    position: relative;
+
+    @include respond(tab-land) {
+      height: 25vh;
+    }
+  }
+
+  &__logo {
+    width: 15rem;
+    height: 15rem;
+
+    @include respond(phone){
+      order: 2;
+      width: 11rem;
+      height: 11rem;
+    }
+
+    &--sec {
+      @include respond(phone) {
+        display: none;
+      }
+    }
+  }
+}
+
+.content {
+  display: flex;
+  position: relative;
+  height: 25vh;
+
+  .img__profile-picture {
+      position: absolute;
+      top: 50%;
+      border-radius: 50%;
+      @include center-horizontal-vertical;
+      height: 26rem;
+      width: 26rem;
+
+      @include respond(big-desktop) {
+        width: 24rem;
+        height: 24rem;
+      }
+
+      @include respond(tab-port){
+        width: 23rem;
+        height: 23rem;
+      }
+
+      @include respond(phone){
+        width: 14rem;
+        height: 14rem;
+      }
+    }
+
+    .uploadLabel {
+      position: absolute;
+      top: 134%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 1.7rem;
+      color: #444444;
+      cursor: pointer;
+      visibility: hidden;
+      opacity: 0;
+      transition: .3s all;
+
+      &:hover {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      @include respond(tab-land) {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      @include respond(tab-port) {
+        top: 116%;
+      }
+
+      @include respond(phone) {
+        top: 91%;
+      }
+    }
+
+
+  .column-1, .column-2 {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    @include respond(tab-port) {
+      font-size: .8rem;
+    }
+  }
+  &__category {
+    text-align: center;
+  }
+
+  &__sub-title {
+    margin-bottom: 1rem;
+    font-size: 1.6rem;
+
+    @include respond(tab-port) {
+      font-size: 1.3rem;
+    }
+  }
+
+  &__sub-text {
+    color: $color-grey-dark;
+    font-size: 1.2rem;
+
+    @include respond(tab-port) {
+      font-size: 1rem;
+    }
+  }
+}
+
+
+.forum {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  height: 50vh;
+    &__last-posts-container, &__last-replies-container {
+      height: 100%;
+      width: 35%;
+      padding: 2rem;
+      padding-top: 4rem;
+      border-top: 1px solid #444444;
+
+      @include respond(phone){
+        height: auto;
+        width: 80%;
+      }
+    }
+  }
+
+.img__profile-picture:hover + .uploadLabel {
+  opacity: 1;
+  visibility: visible;
+}
+
+.spinner {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

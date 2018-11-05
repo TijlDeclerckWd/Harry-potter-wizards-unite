@@ -1,0 +1,30 @@
+
+  <h4 mat-dialog-title>Add a post</h4>
+  <mat-dialog-content>
+    <div class="form-group">
+      <mat-form-field>
+        <input matInput [(ngModel)]="newPostData.title" placeholder="Title">
+      </mat-form-field>
+    </div>
+    <div class="form-group">
+      <mat-form-field>
+        <mat-select #select placeholder="Category" [(ngModel)]="newPostData.category">
+          <mat-option value="General">General</mat-option>
+          <mat-option value="News">News</mat-option>
+          <mat-option value="Quests">Quests</mat-option>
+          <mat-option [value]="house">{{house}}</mat-option>
+          <mat-option [value]="country">{{country}}</mat-option>
+          <mat-option value="Tips & Tricks">Tips & tricks</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <app-ngx-editor [placeholder]="'Enter text here...'" [minHeight]="90000" resizer="stack" [spellcheck]="true"
+                    [(ngModel)]="newPostData.htmlContent"></app-ngx-editor>
+
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button (click)="createPost()" class="btn btn-block confirm-button my-3">Add Post</button>
+  </mat-dialog-actions>
+
+
+

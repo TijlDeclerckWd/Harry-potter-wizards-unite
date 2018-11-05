@@ -1,0 +1,48 @@
+@import "../../SASS/abstracts/variables";
+@import "../../SASS/abstracts/mixins";
+
+.window {
+  height: 100%;
+  overflow: auto;
+
+  .date-container {
+    text-align: center;
+    clear: both;
+    color: #4f53a1;
+    width: 60%;
+    border-bottom: 1px solid #4f53a1;
+    padding: 1.5rem 0 0 0;
+    margin: 0 auto 1.5rem auto;
+
+    @include respond(tab-port) {
+      padding: 3rem 0 0 0;
+      margin: 0 auto 3rem auto;
+    }
+
+    .date {
+      margin-bottom: .5rem;
+    }
+  }
+
+  &__message {
+    width: 50%;
+    word-wrap: break-word;
+    padding: 1rem;
+    border-radius: 20px;
+    margin: .5rem;
+
+    &--left {
+      float: left;
+      background-color: #cccccc;
+      color: black;
+    }
+
+    &--right {
+      float: right;
+      background-color: $color-primary;
+      color: white;
+    }
+
+  }
+
+}

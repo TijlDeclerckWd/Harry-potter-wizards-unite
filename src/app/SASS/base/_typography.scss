@@ -1,0 +1,83 @@
+@import "../abstracts/mixins";
+
+.heading-primary{
+  color: $color-white;
+  text-transform: uppercase;
+  margin-bottom: 6rem;
+
+  &--main {
+    display: block;
+    font-size: 7.5rem;
+    font-weight: 700;
+    letter-spacing: 2.3rem;
+    margin-bottom: 3rem;
+
+    animation: moveInLeft 2s ease-out;
+
+    /*fix for glitch that shocks animation*/
+    backface-visibility: hidden;
+
+    @include respond(phone) {
+      letter-spacing: 1.5rem;
+      font-size: 3.5rem;
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  &--sub {
+    display: block;
+    font-size: 3rem;
+    font-weight: 400;
+    letter-spacing: 1rem;
+    animation: moveInRight 2s ease-out;
+    backface-visibility: hidden;
+    margin-bottom: 1.5rem;
+    color: $color-white;
+
+
+    @include respond(phone) {
+      letter-spacing: .75rem;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+  }
+}
+.heading-secondary {
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  display: inline-block;
+  background-image: linear-gradient(to right, $color-primary-light, $color-primary-dark);
+  // It will clip the background at the places where the text is
+  -webkit-background-clip: text;
+  // so if we make the text transparent it will have the gradient
+  color: transparent;
+  letter-spacing: 2px;
+  transition: all .2s;
+
+  @include respond(tab-port) {
+    font-size: 3rem
+  }
+
+  @include respond(phone) {
+    font-size: 2.5rem
+  }
+
+  &:hover {
+    transform: skewY(2deg) skewX(15deg) scale(1.1);
+    text-shadow: 0.5rem 1rem 2rem rgba($color-black, .2);
+  }
+}
+
+.heading-tertiary {
+  font-size: $default-font-size;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.paragraph {
+  font-size: $default-font-size;
+  &:not(:last-child) {
+    margin-bottom: 3rem;
+  }
+}

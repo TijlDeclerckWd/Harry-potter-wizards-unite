@@ -1,0 +1,29 @@
+<h2 class="last-replies__title">Last forum replies</h2>
+<ng-container *ngIf="!loading; else spinner">
+  <ul *ngIf="replies.length > 0; else noReplies" class="last-replies__list">
+    <li *ngFor="let reply of replies" [routerLink]="['/forum/p', reply.post._id]" class="last-replies__list-item">
+      <div class="style-container">
+        <div class="last-replies__date">
+          <h3 class="day">{{getDate('day', reply.date)}}</h3>
+          <h4 class="month">{{getDate('month', reply.date)}}</h4>
+        </div>
+        <div class="last-replies__post">
+          <h3 class="title">{{reply.content | cutTooLongSentencesPipe}}</h3>
+          <h4 class="content">Replied to post <span class="post">{{reply.post.title | cutTooLongSentencesPipe}}</span></h4>
+        </div>
+      </div>
+    </li>
+  </ul>
+</ng-container>
+
+<ng-template #noReplies>
+  <div class="no-replies">
+    <h4>This person hasn't replied to any forum posts yet</h4>
+  </div>
+</ng-template>
+
+<ng-template #spinner>
+  <div class="spinner">
+    <mat-spinner [diameter]="50"></mat-spinner>
+  </div>
+</ng-template>

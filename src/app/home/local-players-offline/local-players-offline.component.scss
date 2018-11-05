@@ -1,0 +1,96 @@
+@import "../../SASS/abstracts/variables";
+@import "../../SASS/abstracts/mixins";
+
+@import "../../SASS/components/composition";
+@import "../../SASS/components/slope-div";
+
+.slope-div--bottom {
+  margin-top: 2rem;
+}
+
+
+.locate-players {
+  width: 100%;
+  background-image: linear-gradient(
+      rgba($color-grey-dark, 0.5),
+    rgba($color-grey-dark, 0.5)) ,
+  url(/assets/images/Harry_Potter_Quidditch_Firebolt.png);
+  background-size: cover;
+  display: flex;
+  justify-content: space-around;
+  margin: -13rem 0;
+  padding: 14rem 0;
+
+  @include respond(tab-port) {
+    margin: -15rem 0;
+    padding: 15rem 0;
+  }
+
+  &__text-container {
+    width: 40%;
+    height: 100%;
+    padding: 7rem 2rem;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: space-around;
+
+    @include respond(tab-port) {
+      width: 70%;
+      margin: 0 auto;
+    }
+  }
+
+  &__images-container {
+    width: 40%;
+
+    @include respond(tab-port) {
+      display: none;
+    }
+
+    .composition {
+      top: 8rem;
+    }
+  }
+
+  &__header {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: $color-white;
+    align-self: center;
+    font-size: 4.5rem;
+
+  }
+
+  &__sub-header {
+    color: $color-white;
+font-size: 2rem;
+    margin-top: 3rem;
+  }
+
+  &__btn-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 4rem;
+
+    button {
+      width: 40%;
+      background-color: #666;
+      border: 1px solid $color-white;
+      color: $color-white;
+      font-weight: bolder;
+      letter-spacing: 3px;
+      transition: all .2s;
+      border-radius: 3px;
+      padding: 1rem 2rem;
+      outline: none;
+
+      &:hover {
+        background-color: lighten(#666, 15%);
+        transform: translateY(-3px);
+        cursor: pointer;
+        outline: none;
+      }
+    }
+  }
+}

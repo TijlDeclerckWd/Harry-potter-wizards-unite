@@ -1,0 +1,20 @@
+<div class="create-forum-section-container">
+  <input
+    type="text"
+    [(ngModel)]="newSectionName"
+    placeholder="Enter name of new forum section"
+    class="form-control-lg form-control"
+  >
+
+  <input
+    type="text"
+    [(ngModel)]="newSectionDescription"
+    placeholder="Enter description of the new forum section"
+    class="form-control-lg form-control"
+  >
+
+  <button class="btn btn-lg btn-primary" (click)="createForumSection()">Create new forum section</button>
+
+</div>
+
+

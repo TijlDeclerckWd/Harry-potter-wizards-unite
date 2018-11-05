@@ -1,0 +1,28 @@
+
+<div class="navigation">
+  <button class="navigation__btn" (click)="open()">Create a new Discussion</button>
+  <ul class="navigation__list">
+    <li routerLink="/forum" class="navigation__list-item"><i class="fa fa-comments"></i> All discussions</li>
+    <mat-divider></mat-divider>
+    <li routerLink="discussions/News" class="navigation__list-item navigation__list-item--news"><span class="colored-box colored-box--orange"></span> News</li>
+    <li routerLink="discussions/Quests" class="navigation__list-item navigation__list-item"><span class="colored-box colored-box--green"></span> Quests</li>
+    <li routerLink="discussions/Tips & Tricks" class="navigation__list-item"><span class="colored-box colored-box--purple"></span> Tips & Tricks</li>
+    <li *ngIf="currentUser" [routerLink]="['discussions/country', country]" class="navigation__list-item"><span class="colored-box colored-box--yellow"></span>{{ country }}</li>
+    <li *ngIf="currentUser" [routerLink]="['discussions', house]" class="navigation__list-item"><span class="colored-box colored-box--blue"></span>{{ currentUser.house}}</li>
+  </ul>
+</div>
+
+<div class="navigation-phone">
+  <ul class="navigation-phone__list">
+    <li routerLink="/forum" class="navigation-phone__list-item navigation-phone__list-item--general">All discussions</li>
+    <li routerLink="discussions/News" class="navigation-phone__list-item navigation-phone__list-item--news">News</li>
+    <li routerLink="discussions/Quests" class="navigation-phone__list-item navigation-phone__list-item--quests">Quests</li>
+    <li routerLink="discussions/Tips & Tricks" class="navigation-phone__list-item navigation-phone__list-item--tipsntricks">Tips & Tricks</li>
+    <li *ngIf="currentUser" [routerLink]="['discussions/country', country]" class="navigation-phone__list-item navigation-phone__list-item--country" style="color:black">{{ country }}</li>
+    <li *ngIf="currentUser" [routerLink]="['discussions', house]" [style.backgroundColor]="determineBgc(house)" class="navigation-phone__list-item navigation-phone__list-item--special">{{ currentUser.house}}</li>
+  </ul>
+  <div (click)="open()" class="add-discussion-btn">
+    <i class="fa fa-plus"></i>
+  </div>
+</div>
+

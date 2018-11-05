@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,+BAAgC;EAC9B,KAAK,EAAE,GAAG;EACV,UAAU,EAAE,MAAM;EAClB,MAAM,EAAE,MAAM;EACd,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,MAAM;EACtB,WAAW,EAAE,MAAM;EAEnB,qCAAM;IACJ,aAAa,EAAE,IAAI;EAGrB,oCAAK;IACH,OAAO,EAAE,KAAK;IACd,KAAK,EAAE,GAAG",
+"sources": ["create-forum-section.component.scss"],
+"names": [],
+"file": "create-forum-section.component.css"
+}

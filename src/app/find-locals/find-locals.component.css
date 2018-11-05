@@ -1,0 +1,476 @@
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px) rotate(0deg); }
+  /*60% {*/
+  /*transform: rotate(180deg);*/
+  /*}*/
+  80% {
+    transform: translateX(1rem);
+    /*transform: translateX(10px) rotate(180deg);*/ }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px) rotate(0deg); }
+  /*60% {*/
+  /*transform: rotate(180deg);*/
+  /*}*/
+  80% {
+    transform: translateX(1rem);
+    /*transform: translateX(10px) rotate(180deg);*/ }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(10rem); }
+  80% {
+    transform: translateX(-1rem); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(10rem); }
+  80% {
+    transform: translateY(-1rem); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
+.btn {
+  /*link pseudoclass, special state of selector */
+  /*When we click the button that is called the active state*/
+  /*this transform state is always related to the hover state, not the hover state.*/
+  /*the after pseudo element adds an element right behind the elemetn*/ }
+  .btn:link, .btn:visited {
+    text-decoration: none;
+    text-transform: uppercase;
+    /*first are top and bottom, second are left and right*/
+    padding: 1.5rem 4rem;
+    display: inline-block;
+    border-radius: 10rem;
+    /*this refers to all the animations that will be added to the initial state*/
+    /*the transitions property needs to be on the initial state*/
+    transition: all 0.2s;
+    position: relative;
+    font-size: 1.6rem; }
+  .btn:hover {
+    transform: translateY(-0.3rem);
+    /*1st offset in x direction, 2nd y offset, 3rd blury shadow we want to see*/
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+    /* we want to see the after button when we hover the button*/ }
+    .btn:hover::after {
+      /*what scale does is increase the element*/
+      /*there's scale, scaleX and scaleY*/
+      transform: scaleX(1.5) scaleY(1.4);
+      /*this makes the ::after button go invisible after the 0.4 seconds in the transition*/
+      opacity: 0; }
+  .btn:active {
+    transform: translateY(-0.1rem);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
+  .btn--white {
+    background-color: #fff;
+    color: #777; }
+    .btn--white::after {
+      background-color: #fff; }
+  .btn--grey {
+    background-color: #7C7C7C;
+    color: white; }
+  .btn--primary {
+    background-color: #002F5A;
+    color: white; }
+  .btn::after {
+    /*we always need to specify content and display properties*/
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s; }
+  .btn--animated {
+    animation: moveInBottom 2s ease-out .75s;
+    /*the 0% stats will be applied before the animation starts*/
+    animation-fill-mode: backwards; }
+
+.btn-text:link, .btn-text:visited {
+  font-size: 1.6rem;
+  color: #002F5A;
+  display: inline-block;
+  text-decoration: none;
+  border-bottom: 1px solid #002F5A;
+  padding: 3px;
+  transition: all .2s; }
+.btn-text:hover {
+  background-color: #002F5A;
+  color: #fff;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px); }
+.btn-text:active {
+  box-shadow: 0 0.5rem 1 rem rgba(0, 0, 0, 0.15);
+  transform: translateY(0); }
+
+.popup {
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all .3s; }
+  .popup__content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 75%;
+    background-color: #fff;
+    box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+    display: table;
+    overflow: hidden;
+    opacity: 0;
+    transform: translate(-50% -50%) scale(0.25);
+    transition: all .5s .2s; }
+  .popup__left {
+    width: 33.33333333%;
+    display: table-cell; }
+  .popup__right {
+    width: 66.66666%;
+    display: table-cell;
+    vertical-align: middle;
+    padding: 3rem 5rem; }
+  .popup__img {
+    display: block;
+    width: 100%; }
+  .popup__text {
+    font-size: 1.4rem;
+    margin-bottom: 4rem;
+    -moz-column-count: 2;
+    -moz-column-gap: 4rem;
+    -moz-column-rule: 1px solid #eee;
+    column-count: 2;
+    column-gap: 4rem;
+    column-rule: 1px solid #eee;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto; }
+  .popup:target {
+    opacity: 1;
+    visibility: visible; }
+  .popup:target .popup__content {
+    opacity: 1;
+    transform: translate(-50% -50%) scale(1); }
+  .popup__close:link, .popup__close:visited {
+    color: #777;
+    position: absolute;
+    right: 1.4rem;
+    top: 0.7rem;
+    font-size: 3rem;
+    line-height: 1;
+    display: inline-block;
+    text-decoration: none; }
+  .popup__close:hover {
+    color: #002F5A; }
+
+.row {
+  max-width: 114rem;
+  margin: 0 auto; }
+  .row:not(:last-child) {
+    margin-bottom: 8rem; }
+    @media (max-width: 56.25em) {
+      .row:not(:last-child) {
+        margin-bottom: 6rem; } }
+  @media (max-width: 56.25em) {
+    .row {
+      max-width: 50rem;
+      padding: 0 3rem; } }
+  .row::after {
+    content: "";
+    display: table;
+    clear: both; }
+  .row [class^="col-"] {
+    float: left; }
+    .row [class^="col-"]:not(:last-child) {
+      margin-right: 4rem; }
+      @media (max-width: 56.25em) {
+        .row [class^="col-"]:not(:last-child) {
+          margin-right: 0;
+          margin-bottom: 6rem; } }
+    @media (max-width: 56.25em) {
+      .row [class^="col-"] {
+        width: 100% !important; } }
+  .row .col-1-of-1 {
+    width: 100%; }
+  .row .col-1-of-2 {
+    width: calc((100% - 4rem) / 2); }
+  .row .col-1-of-3 {
+    width: calc((100% - 2 * 4rem) / 3); }
+  .row .col-2-of-3 {
+    width: calc( 2 * ((100% - 2 * 4rem)  / 3) + 4rem); }
+  .row .col-1-of-4 {
+    width: calc((100% - 3 * 4rem) / 4); }
+  .row .col-2-of-4 {
+    width: calc(2 * ((100% - 3 * 4rem)  / 4) + 4rem); }
+  .row .col-3-of-4 {
+    width: calc(3 * ((100% - 3 * 4rem)  / 4) + 2 * 4rem); }
+
+#map-section {
+  position: relative; }
+
+.cont {
+  height: 100vh;
+  position: relative; }
+  .cont .row {
+    max-width: none; }
+    .cont .row [class^="col-"] {
+      height: 100vh;
+      transition: all .4s; }
+      .cont .row [class^="col-"]:not(:last-child) {
+        margin-right: 0; }
+      .cont .row [class^="col-"] .profile-mobile {
+        height: 100vh;
+        width: 100vw;
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 4;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        background-image: linear-gradient(to bottom right, #002F5A, #000027);
+        transition: all 1s; }
+        .cont .row [class^="col-"] .profile-mobile__close-sign {
+          position: absolute;
+          top: 5%;
+          left: 5%;
+          color: #000;
+          font-size: 2rem; }
+        .cont .row [class^="col-"] .profile-mobile__img-container {
+          height: 40%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: lightgray; }
+        .cont .row [class^="col-"] .profile-mobile__img {
+          height: 26rem;
+          width: 26rem;
+          border-radius: 50%;
+          box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.5); }
+        .cont .row [class^="col-"] .profile-mobile__list {
+          list-style: none;
+          text-align: center;
+          margin-top: 2rem; }
+        .cont .row [class^="col-"] .profile-mobile__list-item {
+          width: 60%;
+          display: block;
+          margin: 0 auto;
+          padding: 2rem 2rem;
+          color: #fff;
+          border-bottom: 2px solid #fff;
+          font-size: 2rem; }
+        .cont .row [class^="col-"] .profile-mobile__btn-container {
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+          flex: 1 0 0; }
+        .cont .row [class^="col-"] .profile-mobile__btn {
+          width: 35%;
+          border-radius: 2rem;
+          padding: 1rem 2rem;
+          text-transform: uppercase;
+          font-weight: 700;
+          background-color: lightgray; }
+          .cont .row [class^="col-"] .profile-mobile__btn a {
+            text-decoration: none;
+            color: #000; }
+      .cont .row [class^="col-"] .distance {
+        height: 100%;
+        position: absolute;
+        top: 2%;
+        left: 2%;
+        z-index: 3;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start; }
+        .cont .row [class^="col-"] .distance__btn {
+          width: 6rem;
+          height: 6rem;
+          border-radius: 50%;
+          text-align: center;
+          font-weight: 800;
+          font-size: 1.2rem;
+          letter-spacing: 1px;
+          box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.4);
+          display: flex;
+          justify-content: center;
+          align-items: center; }
+          .cont .row [class^="col-"] .distance__btn:not(:first-child) {
+            transform: translateX(-20rem);
+            opacity: 0;
+            margin-top: 1.5rem; }
+          .cont .row [class^="col-"] .distance__btn--chosen {
+            background-color: #fff;
+            color: #000; }
+          .cont .row [class^="col-"] .distance__btn--1 {
+            background-color: #1a472a;
+            color: #fff;
+            transition: all .5s; }
+          .cont .row [class^="col-"] .distance__btn--5 {
+            background-color: #740001;
+            color: #fff;
+            transition: all .5s .1s; }
+          .cont .row [class^="col-"] .distance__btn--20 {
+            background-color: #0e1a40;
+            color: #fff;
+            transition: all .5s .2s; }
+          .cont .row [class^="col-"] .distance__btn--50 {
+            background-color: #ecb939;
+            color: #fff;
+            transition: all .5s .3s; }
+          .cont .row [class^="col-"] .distance__btn--100 {
+            background-color: #814488;
+            color: #fff;
+            transition: all .5s .4s; }
+      .cont .row [class^="col-"] agm-map {
+        height: 100%;
+        transform: translateY(10vh); }
+      .cont .row [class^="col-"] .profileSection {
+        height: 100%;
+        transition: all 2s;
+        backface-visibility: hidden;
+        color: black; }
+        .cont .row [class^="col-"] .profileSection__header {
+          height: 100%;
+          position: relative; }
+          .cont .row [class^="col-"] .profileSection__header--slytherin {
+            background-image: url("/assets/images/slytherin-logo.jpg");
+            background-size: cover;
+            background-position: bottom center; }
+          .cont .row [class^="col-"] .profileSection__header--gryffindor {
+            background-image: url("/assets/images/gryffindor-logo.jpg");
+            background-size: cover;
+            background-position: top center; }
+          .cont .row [class^="col-"] .profileSection__header--hufflepuff {
+            background-image: url("/assets/images/hufflepuff-background.png");
+            background-size: cover;
+            background-position: bottom center; }
+          .cont .row [class^="col-"] .profileSection__header--ravenclaw {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("/assets/images/ravenclaw-logo2.jpg");
+            background-size: contain;
+            background-position: center; }
+        .cont .row [class^="col-"] .profileSection__img {
+          height: 19rem;
+          width: 19rem;
+          border-radius: 50%;
+          opacity: .2;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          transition: all .5s; }
+          .cont .row [class^="col-"] .profileSection__img--start {
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(1.6); }
+          .cont .row [class^="col-"] .profileSection__img--end {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1; }
+        .cont .row [class^="col-"] .profileSection .header-box {
+          display: block;
+          position: absolute;
+          width: 20%;
+          word-wrap: break-word;
+          text-align: center;
+          transform: translate(-50%, -50%);
+          transition: all 1s; }
+          .cont .row [class^="col-"] .profileSection .header-box--top {
+            top: 5%;
+            left: 50%;
+            opacity: 1; }
+          .cont .row [class^="col-"] .profileSection .header-box--right {
+            top: 50%;
+            left: 90%;
+            opacity: 1; }
+          .cont .row [class^="col-"] .profileSection .header-box--bottom {
+            top: 95%;
+            left: 50%;
+            opacity: 1; }
+          .cont .row [class^="col-"] .profileSection .header-box--left {
+            top: 50%;
+            left: 10%;
+            opacity: 1; }
+        .cont .row [class^="col-"] .profileSection__data {
+          color: #fff;
+          background-color: transparent; }
+        .cont .row [class^="col-"] .profileSection__btn {
+          position: absolute;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 15%;
+          border-radius: 2rem;
+          padding: .5rem rem;
+          transition: all .3s;
+          background-color: #ddd; }
+          .cont .row [class^="col-"] .profileSection__btn:hover {
+            background-color: #fff; }
+          .cont .row [class^="col-"] .profileSection__btn .fa-user, .cont .row [class^="col-"] .profileSection__btn .fa-envelope {
+            font-size: 2.5rem; }
+          .cont .row [class^="col-"] .profileSection__btn--first {
+            top: 25%;
+            left: 50%;
+            opacity: 1; }
+          .cont .row [class^="col-"] .profileSection__btn--sec {
+            top: 75%;
+            left: 50%;
+            opacity: 1; }
+    .cont .row .col-1-of-2:not(:last-child) {
+      margin-right: 1rem !important; }
+  .cont mat-spinner {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%); }
+
+.not-visible {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(50rem); }
+
+.visible {
+  opacity: 1;
+  visibility: visible; }
+
+.show-distances {
+  transform: translateX(0) !important;
+  opacity: 1 !important; }
+
+.start-pos {
+  top: 50%;
+  left: 50%;
+  opacity: 0; }
+  .start-pos--top {
+    top: 50%;
+    left: 50%;
+    opacity: 1;
+    width: 40% !important; }
+    .start-pos--top h3 {
+      font-size: 2.5rem;
+      display: block;
+      margin: 2rem auto; }
+
+.row {
+  padding: 0 !important; }
+
+/*# sourceMappingURL=find-locals.component.css.map */

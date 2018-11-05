@@ -1,0 +1,108 @@
+@import "../../SASS/abstracts/variables";
+@import "../../SASS/abstracts/mixins";
+
+.reply {
+  width: 100%;
+  min-height: 15rem;
+  display: flex;
+  border-bottom: 1px solid #aaa;
+  padding: 2rem 0;
+  position: relative;
+
+  @include respond(tab-port) {
+    min-height: 12rem;
+  }
+
+
+  .profile-pic-container {
+    width: 10%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    @include respond(tab-port) {
+      width: 15%;
+    }
+    .profile-pic {
+      width: 8rem;
+      height: 8rem;
+      border-radius: 50%;
+      box-shadow: 0 1rem 2rem rgba($color-black, .1);
+
+      @include respond(phone) {
+        width: 6rem;
+        height: 6rem;
+      }
+    }
+  }
+
+  .data-container {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    padding: 0 2rem;
+
+    .poster {
+      font-weight: 700;
+      margin-bottom: 2rem;
+
+      @include respond(tab-port) {
+        margin-bottom: 1rem;
+      }
+      .date-post {
+        font-size: 1rem;
+        margin-left: 0.5rem;
+        font-weight: 500;
+      }
+    }
+
+    .content {
+      .quoted-reply-username {
+        font-size: 1.1rem;
+        margin-left: 2rem;
+      }
+
+      .quoted-reply-container {
+        border: 1px solid #aaaaaa;
+        border-radius: 1rem;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 1rem 2rem rgba($color-black, .1);
+        .quoted-reply {
+          font-size: 1.3rem;
+          margin-bottom: 0;
+          word-wrap: break-word;
+        }
+      }
+
+      .content-text {
+        font-size: 1.6rem;
+        word-wrap: break-word;
+      }
+    }
+  }
+
+  .fa {
+    position: absolute;
+    bottom: 1rem;
+    font-size: 1.5rem;
+  }
+
+  .fa-trash{ right: 8rem;}
+
+  .fa-pencil-square-o { right:5rem;}
+
+  .fa-quote-left { right: 2rem;}
+
+}
+
+
+.edit-reply-btn {
+  margin-top: 2rem;
+  transition: .3s all;
+
+  &:hover {
+    transform: translateY(-0.3rem);
+    box-shadow: 0 1rem 3rem rgba($color-black, .4);
+  }
+}

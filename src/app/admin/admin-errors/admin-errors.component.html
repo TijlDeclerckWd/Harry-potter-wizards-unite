@@ -1,0 +1,29 @@
+<div class="admin-errors">
+  <div class="errors-container errors-container--server">
+    <h2 class="error-type">Server Errors</h2>
+    <ul class="error-list">
+      <li class="error" *ngFor="let serverError of serverErrors">
+        <p>Name: {{serverError.name}}</p>
+        <p>Notification: {{serverError.notification}}</p>
+        <p>Type: {{serverError.type}}</p>
+        <p>Time: {{serverError.time | msToDatePipe | amLocal | amDateFormat: 'DD-MM-YYYY HH:mm'}}</p>
+        <p>URL:{{serverError.url}}</p>
+        <p>Message: {{serverError.message.length > 6 ? (serverError.message | slice:0:130) + '...' : serverError.message}}</p>
+      </li>
+    </ul>
+  </div>
+  <div class="errors-container errors-container--client">
+    <h2 class="error-type">Client errors</h2>
+    <ul class="error-list">
+      <li class="error" *ngFor="let clientError of clientErrors">
+        <p>Name: {{clientError.name}}</p>
+        <p>Notification: {{clientError.notification}}</p>
+        <p>Type: {{clientError.type}}</p>
+        <p>Time: {{clientError.time | msToDatePipe | amLocal | amDateFormat: 'DD-MM-YYYY HH:mm'}}</p>
+        <p>URL:{{clientError.url}}</p>
+        <p>Message: {{clientError.message.length > 130 ? (clientError.message | slice:0:130) + '...' : clientError.message}}</p>
+        <p>Stack: {{clientError.stack.length > 130 ? (clientError.stack | slice:0:130) + '...' : clientError.stack}}</p>
+      </li>
+    </ul>
+  </div>
+</div>
