@@ -1,13 +1,13 @@
-var express = require('express');
-var router = express.Router();
-var ForumPost = require("../models/forumPost");
-var async = require("async");
-var User = require('../models/user');
-var jwtDecode = require('jwt-decode');
-var ForumSection = require('../models/forumSection');
-var ForumReply = require('../models/forumReply');
-var ForumCount = require('../models/forumCount');
-var SubViewCount = require('../models/subViewCount');
+let express = require('express');
+let router = express.Router();
+let ForumPost = require("../models/forumPost");
+let async = require("async");
+let User = require('../models/user');
+let jwtDecode = require('jwt-decode');
+let ForumSection = require('../models/forumSection');
+let ForumReply = require('../models/forumReply');
+let ForumCount = require('../models/forumCount');
+let SubViewCount = require('../models/subViewCount');
 
 router.post('/addPost', function(req, res){
     var decodedToken = jwtDecode(req.body.token);
@@ -36,7 +36,6 @@ router.post('/addPost', function(req, res){
             message: "successfully added forum message",
             obj: post
         })
-
     });
 
     function saveNewPost(cb){

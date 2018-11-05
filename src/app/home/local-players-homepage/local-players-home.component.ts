@@ -34,6 +34,9 @@ export class LocalPlayersHomeComponent implements OnInit, OnDestroy {
     grabThreeClosestLocations() {
         this.findLocalsService.getThreeClosestPlayers()
           .subscribe((data) => {
+            if (data.threeClosest.length > 3) {
+              data.threeClosest = data.threeClosest.slice(0, 3);
+            }
             this.nearbyPlayers = data.threeClosest;
             console.log(data);
       }, (err) => {
